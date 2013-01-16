@@ -47,10 +47,15 @@
 
 	$(document).ready(function () {
 		demo1Init();
-		$("#addBtn").click(addArea);
+		$("#demo1 #addBtn").click(addArea);
 		$("#addNewArea").click(addNewArea);
+		fetchData();
 
 	});
+
+	//
+	// demo 1
+	//
 
 	var testViewModel =  {
 	 	name : ko.observable("Mike"),
@@ -63,7 +68,15 @@
 	 		]),
 
 	 	selectedSkiArea : ko.observable(),
-	 	skiAreaToAdd: ko.observable()
+	 	skiAreaToAdd: ko.observable(),
+
+		//
+		// demo 2 - data loaded via ajax/json
+		//
+		music: ko.observable(""),
+		activityList : ko.observableArray()
+
+
 	 };
 
 	 function addArea()
@@ -81,13 +94,30 @@
 	 	}
 	 }
 
-
 	function demo1Init()
 	{
 		ko.applyBindings(testViewModel);
 	}
 	
+	function fetchData()
+	{
+		//
+		// note: demo doesn't work run locally in chrome due to security restrictions to local files... should load off a server ok
+		//
+		$.ajax({
+		    type : 'GET',
+		    dataType : 'json',
+		    url: 'data.json',
+		    async: false,
+		    success : function(data) {
+		    	testViewModel.music(data.music);
 
+		        $.each(data.activities, function(index, obj){
+		        	testViewModel.activityList.push(obj);
+		        });
+		    } 
+		});		
+	}
 
 
 </script>	
@@ -96,8 +126,8 @@
 </head>
 <body>
 
-<!-- demo 2 -->
-<div class="demo">
+<!-- demo 1 -->
+<div id="demo1" class="demo">
 <h2>Knockout Test 1</h2>
 
 <span>Name:</span> <span data-bind="text: name"></span>
@@ -128,18 +158,37 @@
 	<li data-bind="text: AreaName"></li>
 </ul>
 
-<!-- demo 1 debug -->
-<hr noshade />
-<h3>ViewModel Data</h3>
-<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
-<hr noshade />
-<br />
 </div>
 
 <!-- demo 2 -->
 <div class="demo">
 <h2>Knockout Test 2</h2>
+<p>Loading data via ajax/JSON</p>
 <br />
+
+<span>Music: </span><span data-bind="text: music"></span>
+<br>
+
+<span>Activities:</span>
+<br>
+<ul data-bind="foreach: activityList">
+	<li data-bind="text: name"></li>
+</ul>
+
+<br>
+</div>
+
+<!-- demo debug -->
+<div class="demo">
+<h2>ViewModel Data Debug</h2>
+
+<hr noshade />
+
+<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+
+<hr noshade />
+<br />
+
 </div>
 
 </body>
