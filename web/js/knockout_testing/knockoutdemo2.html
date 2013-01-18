@@ -1,0 +1,286 @@
+<html>
+<head>
+
+<script src="inc/js/jquery.js"></script>
+<script src="inc/js/knockout-2.2.0.js"></script>
+
+
+<style type="text/css">
+
+    body
+    {
+        background-color: #56789a;
+        font-family:tahoma;
+        color: #FFFFFF;
+    }
+
+	.demo
+	{
+        width: 80%;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+		border: 1px solid black;
+		background-color: #FFF;
+		color: #000;
+		padding: 4px;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;        
+        -webkit-box-shadow: 3px 3px 10px #333333;	
+        -moz-box-shadow: 3px 3px 10px #333333;
+        box-shadow: 3px 3px 10px #333333;		
+
+	}
+
+    .demo h2
+    {
+    	font-size: 32px;
+        color: #CDCDCD;
+        text-align: center;
+        text-shadow: 2px 2px 4px #666666;
+    }	
+
+    .demoSection
+    {
+    	width:80%;
+    	margin: auto;
+    	margin-bottom: 10px;
+    	border: 1px solid #CCCCCC;
+		padding: 4px;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;            	
+    }
+
+    .demoSection h2
+    {
+    	margin-top: 5px;
+    	color: #56789a;
+    	font-size: 20px;
+    	text-shadow: 2px 2px 4px #FFF;
+    }
+
+	/* -- fancy table list -- */
+	.listTableFancy
+	{
+	    margin-left:auto; 
+	    margin-right:auto;		
+		width: 90%;
+		border-collapse:collapse;
+		text-align:left;
+	}
+
+	.listTableFancy caption
+	{
+		font-size:14px;
+		font-weight:bold;
+		color:#039;
+	}
+
+	.listTableFancy th
+	{
+		font-size:14px;
+		font-weight:normal;
+		color:#039;
+		border-bottom:4px solid #6678b1;
+		padding:10px 8px;
+	}
+
+	/* for alternating row color */
+	.listTableFancy tr:nth-child(even) {
+	    background: #eeeeff; /* #DBDFE3; */		
+	}
+
+	.listTableFancy td
+	{
+		border-bottom:2px solid #ccc;
+		font-size:12px;
+		color:#669;
+		padding:6px 8px;
+	}
+
+	.listTableFancy tbody tr:hover td
+	{
+		color:#009;
+		background: #FFFFCC;
+	}
+
+	.listTableFancy tfoot tr
+	{
+		background: #6678b1;
+	}
+
+	.listTableFancy tfoot td
+	{
+		font-size:12px;
+		color:#ccc;
+		padding:6px 8px;
+	}
+
+    #addAreaForm
+    {
+    	width:50%;
+    	margin: auto;
+    	margin-bottom: 10px;
+    	border: 1px solid #CCCCCC;
+		padding: 4px;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;            	
+    }
+
+    #addAreaForm label
+    {
+    	color: #56789a;
+    	font-size: 11px;
+    	font-weight: bold;
+    }
+
+    #addAreaForm button
+    {
+    	color: #56789a;
+    	font-size: 11px;
+    	font-weight: bold;
+    }
+
+</style>
+
+<script type="text/javascript">
+
+	$(document).ready(function () {
+		demoInit();
+
+	});
+
+	var ViewModel = {
+
+	 	favoriteSkiAreas : ko.observableArray([
+	 			{ ID: 1, AreaName: "Stowe", AreaRating: 5},
+	 			{ ID: 2, AreaName: "Mad River Glen", AreaRating: 4},
+	 			{ ID: 3, AreaName: "Sugarbush", AreaRating: 4 }
+	 		]),
+
+	 	skiAreaToAdd: ko.observable(""),
+	 	skiAreaToAddID: ko.observable(4),
+	 	skiAreaToAddRating: ko.observable(4),
+
+	 	removeArea : function(area) {
+	 		ViewModel.favoriteSkiAreas.remove(area);
+	 	}
+
+	 };
+
+	 function addNewArea()
+	 {
+	 	var newArea = ViewModel.skiAreaToAdd() ? ViewModel.skiAreaToAdd() : "";
+	 	var newAreaRating = ViewModel.skiAreaToAddRating() ? ViewModel.skiAreaToAddRating() : "";
+	 	var newAreaID = ViewModel.skiAreaToAddID();
+
+	 	if ((newArea.length > 0) && (newAreaRating.length > 0))
+	 	{
+	 		ViewModel.favoriteSkiAreas.push({ ID: newAreaID, AreaName: newArea, AreaRating: newAreaRating });
+	 		ViewModel.skiAreaToAddID(newAreaID + 1);
+	 	}
+	 }
+
+	function demoInit()
+	{
+		ko.applyBindings(ViewModel);
+	}
+	
+	function fetchData()
+	{
+		//
+		// note: demo doesn't work run locally in chrome due to security restrictions to local files... should load off a server ok
+		//
+		$.ajax({
+		    type : 'GET',
+		    dataType : 'json',
+		    url: 'data.json',
+		    async: false,
+		    success : function(data) {
+		    	testViewModel.music(data.music);
+
+		        $.each(data.activities, function(index, obj){
+		        	testViewModel.activityList.push(obj);
+		        });
+		    } 
+		});		
+	}
+
+
+</script>	
+
+
+</head>
+<body>
+
+<div class="demo">
+<h2>Knockout Testing</h2>
+<br />
+
+<div class="demoSection">
+<h2>Data Entry</h2>
+
+<div id="addAreaForm">
+<label for="areaName">Area:</label><input type="text" id="areaName" placeholder="New Area" data-bind="value: skiAreaToAdd">
+<label for="areaRating">Rating:</label><select id="areaRating" data-bind="value: skiAreaToAddRating"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+<button data-bind="click: addNewArea">Add Area</button>
+</div>
+<br />
+
+<table class="listTableFancy">
+	<caption>Favorite Ski Areas</caption>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Rating</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody data-bind="foreach: favoriteSkiAreas">
+		<tr>
+			<td data-bind="text: ID"></td> 
+			<td data-bind="text: AreaName"></td>
+			<td data-bind="text: AreaRating"></td>
+			<td><a href='#' data-bind='click: $root.removeArea'>Delete</a></td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="3" align="right">Number of areas:</td>
+			<td data-bind="text: favoriteSkiAreas().length"></td>
+		</tr>
+	</tfoot>
+</table>
+<br />
+
+</div>
+
+<br>
+
+<div id="savedAreaOutput">
+	
+	<ul data-bind="foreach: savedSkiAreas">
+		<li data-bind="text: AreaName"></li>
+	</ul>
+</div>
+
+
+<!-- demo debug -->
+<div class="demo">
+<h2>ViewModel Data Debug</h2>
+
+<hr noshade />
+
+<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+
+<hr noshade />
+<br />
+
+</div>
+
+</body>
+</html>
