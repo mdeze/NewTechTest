@@ -41,6 +41,25 @@
         text-shadow: 2px 2px 4px #666666;
     }	
 
+    .demoSection
+    {
+    	width:80%;
+    	margin: auto;
+    	margin-bottom: 10px;
+    	border: 1px solid #CCCCCC;
+		padding: 4px;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;            	
+    }
+    .demoSection h2
+    {
+    	margin-top: 5px;
+    	color: #56789a;
+    	font-size: 20px;
+    	text-shadow: 2px 2px 4px #FFF;
+    }
+
 </style>
 
 <script type="text/javascript">
@@ -74,10 +93,46 @@
 		// demo 2 - data loaded via ajax/json
 		//
 		music: ko.observable(""),
-		activityList : ko.observableArray()
+		activityList : ko.observableArray(),
+
+		//
+		// demo 3 - forms
+		//
+        numberOfClicks : ko.observable(0),
+		places : ko.observableArray(['London', 'Paris', 'Tokyo']),
+
+        incrementClickCounter : function() {
+            var previousCount = this.numberOfClicks();
+            this.numberOfClicks(previousCount + 1);
+        },
+
+         // The current item will be passed as the first parameter, 
+         // so we know which place to remove
+        removePlace : function(place) {
+             testViewModel.places.remove(place);
+         },
+
+        submitForm: function(formelement){
+        	alert("you've submitted the form!");
+     	},
+
+     	hasCellphone : ko.observable(false),
+        cellphoneNumber: "",
+
+        userName: ko.observable(""),        // Initially blank
+        userPassword: ko.observable("abc"), // Prepopulate        
+        selectedOS: ko.observable(""),
+
+        wantsSpam : ko.observable(true)
 
 
 	 };
+
+	 function uncheckSpamOption()
+	 {
+	 	var valueToSet = testViewModel.wantsSpam()? false : true;
+ 		testViewModel.wantsSpam(valueToSet);
+	 }
 
 	 function addArea()
 	 {
@@ -177,6 +232,73 @@
 
 <br>
 </div>
+
+
+<!-- demo 3 -->
+<div class="demo">
+<h2>Knockout Test 3</h2>
+<p>Bindings that are usefull with Forms</p>
+<br />
+
+<div class="demoSection">
+	<h2>Click Binding</h2>
+    You've clicked <span data-bind="text: numberOfClicks"></span> times
+    <button data-bind="click: incrementClickCounter">Click me</button>
+    <br />
+
+	<ul data-bind="foreach: places">
+	    <li>
+	        <span data-bind="text: $data"></span>
+	        <button data-bind="click: $root.removePlace">Remove</button>
+	    </li>
+	</ul>    
+</div>
+
+<div class="demoSection">
+	<h2>Submit Binding</h2>
+	Bind form submission to a javascript function... will work with button click, enter etc
+	<form data-bind="submit: submitForm">
+		<button>Submit already</button>
+	</form>
+</div>	
+
+<div class="demoSection">
+	<h2>Enable Binding</h2>
+	element enabled based on model property 
+<p>
+    <input type='checkbox' data-bind="checked: hasCellphone" />
+    I have a cellphone
+</p>
+<p>
+    Your cellphone number:
+    <input type='text' data-bind="value: cellphoneNumber, enable: hasCellphone" />
+</p>
+</div>	
+
+<div class="demoSection">
+	<h2>Value Binding</h2>
+For use with input, select &amp; textarea elements	
+
+<p>Login name: <input data-bind="value: userName" /></p>
+<p>Password: <input type="password" data-bind="value: userPassword" /></p>
+<p>OS: <select data-bind="value: selectedOS"><option>OS X</option><option>Linux</option><option>Windows</option></select></p>
+<br>
+<span>debug:</span>&nbsp;<span>[login] == </span><span data-bind="text: userName"></span>&nbsp;<span>[pswd] == </span><span data-bind="text: userPassword"></span>
+<span>[os] == </span><span data-bind="text: selectedOS"></span>
+
+</div>	
+
+<div class="demoSection">
+	<h2>Checked Binding</h2>
+For use with check boxes and radio buttons elements	
+
+<p>Send me spam: <input type="checkbox" data-bind="checked: wantsSpam" /></p>
+<button data-bind="click: uncheckSpamOption">Change Mind</button>
+</div>	
+
+<br>
+</div>
+
 
 <!-- demo debug -->
 <div class="demo">
