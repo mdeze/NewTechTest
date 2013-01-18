@@ -155,61 +155,40 @@
 
 	var ViewModel = {
 
-	 	favoriteSkiAreas : ko.observableArray([
-	 			{ ID: 1, AreaName: "Stowe", AreaRating: 5},
-	 			{ ID: 2, AreaName: "Mad River Glen", AreaRating: 4},
-	 			{ ID: 3, AreaName: "Sugarbush", AreaRating: 4 }
-	 		]),
+		favoriteSkiAreas : ko.observableArray([
+			{ ID: 1, AreaName: "Stowe", AreaRating: 5},
+			{ ID: 2, AreaName: "Mad River Glen", AreaRating: 4},
+			{ ID: 3, AreaName: "Sugarbush", AreaRating: 4 }
+		]),
 
-	 	skiAreaToAdd: ko.observable(""),
-	 	skiAreaToAddID: ko.observable(4),
-	 	skiAreaToAddRating: ko.observable(4),
+		skiAreaToAdd: ko.observable(""),
+		skiAreaToAddID: ko.observable(4),
+		skiAreaToAddRating: ko.observable(4),
 
-	 	removeArea : function(area) {
-	 		ViewModel.favoriteSkiAreas.remove(area);
-	 	}
+		removeArea : function(area) {
+			ViewModel.favoriteSkiAreas.remove(area);
+		}
 
-	 };
+	};
 
-	 function addNewArea()
-	 {
-	 	var newArea = ViewModel.skiAreaToAdd() ? ViewModel.skiAreaToAdd() : "";
-	 	var newAreaRating = ViewModel.skiAreaToAddRating() ? ViewModel.skiAreaToAddRating() : "";
-	 	var newAreaID = ViewModel.skiAreaToAddID();
+	function addNewArea()
+	{
+		var newArea = ViewModel.skiAreaToAdd() ? ViewModel.skiAreaToAdd() : "";
+		var newAreaRating = ViewModel.skiAreaToAddRating() ? ViewModel.skiAreaToAddRating() : "";
+		var newAreaID = ViewModel.skiAreaToAddID();
 
-	 	if ((newArea.length > 0) && (newAreaRating.length > 0))
-	 	{
-	 		ViewModel.favoriteSkiAreas.push({ ID: newAreaID, AreaName: newArea, AreaRating: newAreaRating });
-	 		ViewModel.skiAreaToAddID(newAreaID + 1);
-	 	}
-	 }
+		if ((newArea.length > 0) && (newAreaRating.length > 0))
+		{
+			ViewModel.favoriteSkiAreas.push({ ID: newAreaID, AreaName: newArea, AreaRating: newAreaRating });
+			ViewModel.skiAreaToAddID(newAreaID + 1);
+		}
+	}
 
 	function demoInit()
 	{
 		ko.applyBindings(ViewModel);
 	}
 	
-	function fetchData()
-	{
-		//
-		// note: demo doesn't work run locally in chrome due to security restrictions to local files... should load off a server ok
-		//
-		$.ajax({
-		    type : 'GET',
-		    dataType : 'json',
-		    url: 'data.json',
-		    async: false,
-		    success : function(data) {
-		    	testViewModel.music(data.music);
-
-		        $.each(data.activities, function(index, obj){
-		        	testViewModel.activityList.push(obj);
-		        });
-		    } 
-		});		
-	}
-
-
 </script>	
 
 
