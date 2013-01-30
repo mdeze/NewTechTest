@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Javascript Prototype</title>
+
+<script src="inc/js/jquery.js"></script>
+
+<style type="text/css">
+	body
+	{
+	background-color: #56789a;
+	font-family:tahoma;
+	color: #FFFFFF;
+	}
+
+	h1
+	{
+	text-align: center;
+	}
+
+	pre
+	{
+		width: 80%;
+		margin: auto;
+		font-size: 11px;
+		border: 1px solid black;
+		padding: 5px;
+		border-radius: 4px;        
+		color: #000;
+	}
+
+	.demo
+	{
+	width: 85%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 1px solid black;
+	background-color: #FFF;
+	color: #56789a;
+	font-size: 10pt;
+	padding: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;        
+	-webkit-box-shadow: 3px 3px 10px #333333;	
+	-moz-box-shadow: 3px 3px 10px #333333;
+	box-shadow: 3px 3px 10px #333333;		
+	}
+
+	.demo h2
+	{
+	color: #CDCDCD;
+	text-align: center;
+	}
+
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		var calc = new Calculator("target1");
+		calc.add(11, 15);
+
+		// override subtract function
+		Calculator.prototype.subtract = function(x, y){
+			var val = x - y + 1115;
+			this.elem.innerHTML = val;
+		};
+
+		var c = new Calculator("target2");
+		c.subtract(9, 5); // = 1119 instead of 4
+		
+	});
+
+	//
+	// "constructor" init
+	//
+	var Calculator = function(domID){
+		this.elem = document.getElementById(domID)
+	};
+
+	//
+	// define "class" - note that this is
+	// an object literal
+	//
+	Calculator.prototype = {
+		add: function(x, y){
+			var value = x + y;
+			this.elem.innerHTML = value;
+		},
+		subtract: function(x, y){
+			var value = x - y;
+			this.elem.innerHTML = value;
+		}
+	}
+
+	// if not already created, create object
+	var NS = NS || {};
+
+	// create Calculator object as child of NS parent object
+	NS.Calculator = function(){
+		this.value = "foobar";
+	};
+
+	// init using fullname
+	var n = new NS.Calculator();
+
+</script>
+
+</head>
+
+<body>
+
+<div class="demo">	
+
+<h2>Javascript Prototypes</h2>
+<p>Benefits to using the prototype pattern:
+<ul>
+	<li>Modularize code</li>
+	<li>functions not in global name space</li>
+	<li>functions stored in memory once for many instances</li>
+	<li>functions can be overriden</li>
+</ul>
+</p>
+<div id="target1"></div>
+<div id="target2"></div>
+
+<pre>
+	//
+	// "constructor" init
+	//
+	var Calculator = function(domID){
+		this.elem = document.getElementById(domID);
+
+		// "instance variables" are set in the ctor - not shared
+		this.defaultValue = true;
+		this.total = null;
+	};
+
+	//
+	// define "class" - note that this is
+	// an object literal
+	//
+	// these functions are shared
+	//
+	Calculator.prototype = {
+		add: function(x, y){
+			var value = x + y;
+			this.elem.innerHTML = value;
+		},
+		subtract: function(x, y){
+			var value = x - y;
+			this.elem.innerHTML = value;
+		}
+	}
+
+	//
+	// example usage of prototype
+	//
+	$(document).ready(function () {
+		var calc = new Calculator("target1");
+		calc.add(11, 15);
+		
+	});
+
+	// 
+	// example override subtract function
+	//
+	Calculator.prototype.subtract = function(x, y){
+		var val = x - y + 1115;
+		this.elem.innerHTML = val;
+	};
+
+	var c = new Calculator("target2");
+	c.subtract(9, 5); // = 1119 instead of 4
+
+	//
+	// puting prototype in a namespace to prevent 
+	// name collision
+	//
+
+	// if not already created, create object
+	var NS = NS || {};
+
+	// create Calculator object as child of NS parent object
+	NS.Calculator = function(){
+		this.value = "foobar";
+	};
+
+	// init using fullname
+	var n = new NS.Calculator();
+	
+</pre>
+<br />
+
+</div>
+
+</body>
+</html>
