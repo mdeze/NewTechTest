@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+<style type="text/css">
+  body
+  {
+      background-color: #56789a;
+      font-family:tahoma;
+      color: #FFFFFF;
+  }
+
+  h1
+  {
+      text-align: center;
+  }
+
+  label
+  {
+   font-weight: bold; 
+   color: #56789a;
+  }
+
+  form
+  {
+  border: 1px solid #56789a;
+  padding: 5px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;          
+  }
+
+  .demoNotes
+  {
+    border: 1px solid #56789a;
+    padding: 2px;
+    background-color: #CDCDCD;
+    font-family: courier;
+    font-size: 10px;
+  }
+
+    .demo
+    {
+        width: 85%;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+  	border: 1px solid black;
+  	background-color: #FFF;
+  	color: #000;
+  	font-size: 10pt;
+  	padding: 4px;
+  	-moz-border-radius: 4px;
+  	-webkit-border-radius: 4px;
+  	border-radius: 4px;        
+        -webkit-box-shadow: 3px 3px 10px #333333;	
+        -moz-box-shadow: 3px 3px 10px #333333;
+        box-shadow: 3px 3px 10px #333333;		
+    }
+
+    .demo h2
+    {
+        color: #CDCDCD;
+        text-align: center;
+    }
+
+  .demo input:not([type=search])
+  {
+  	border: 1px solid #CDCDCD;
+  	background-color: #FFF;
+  	padding: 2px;
+  	-moz-border-radius: 2px;
+  	-webkit-border-radius: 4px;
+  	border-radius: 4px;        
+  	-webkit-box-shadow: 3px 3px 10px #FFFFEE;	
+  	-moz-box-shadow: 3px 3px 10px #FFFFEE;
+  	box-shadow: 3px 3px 10px #FFFFEE;		  
+  }
+
+  .demo input[type=tel]
+  {
+    background-color: yellow;
+  }
+
+  ::-webkit-input-placeholder {
+    /* Style placeholder text */
+  }
+  :-moz-placeholder  {
+    /* Style placeholder text */
+  }
+
+</style>
+
+</head>
+<body>
+<div class="demo">	
+<h2>HTML 5 Form elements</h2>
+
+<form>
+  <label for="emailInput">email</label>
+  <input type="email" name="emailInput" />
+  <span class="demoNotes">browser will validate that the data entered is an email address</span>
+  <br />
+  
+ <label for="telInput">tel</label>
+  <input type="tel" name="telInput" />
+  <span class="demoNotes">no validation, can use css selector, mobile presents keypad</span>
+  <br /> 
+ 
+  <label for="urlInput">url</label>
+  <input type="url" name="urlInput" />
+  <span class="demoNotes">inconsistent validation, can use css selector, mobile presents keypad</span>
+  <br /> 
+
+  <label for="dateInput">date</label>
+  <input type="date" name="dateInput" value="2013-02-13"/>
+  <span class="demoNotes">inconsistent support, some browsers present calendar widget others numeric spinner</span>
+  <br />   
+  
+  <label for="searchInput">search</label>
+  <input type="search" name="searchInput" />
+  <span class="demoNotes">inconsistent validation, can use css selector, mobile presents keypad</span>
+  <br /> 
+
+ <label for="numberInput">number</label>
+  <input type="number" name="numberInput" />
+  <span class="demoNotes">validates numeric data provides a spinner, mobile presents numeric keypad</span>
+  <br /> 
+  
+ <label for="rangeInput">range</label>
+  <input type="range" name="rangeInput" />
+  <span class="demoNotes">used for imprecise numeric selection(think opacity)</span>
+  <br /> 
+
+  <br />
+  <button>submit</button>
+  </form>
+  <br />
+
+    <h2>HTML 5 Form Attributes</h2>
+
+<form>
+<label for="phone">placeholder</label>  
+<input name=phone type=tel placeholder="(555) 555-5555">
+<span class="demoNotes">present watermark for data input disappears when data is entered vendor specific css selector</span>
+  <br /> 
+
+<label for="focus">autofocus</label>  
+<input name="focus" autofocus type="text">  
+<span class="demoNotes">cursor is here when page loads</span>
+  <br /> 
+
+<label for="requiredField">required</label>  
+<input type="text" name="requiredField" required >
+<span class="demoNotes">enforces field input on submit, must have a name attribute, :required  - CSS pseudo class selector</span>
+  <br /> 
+
+<label for="mxlgnth">maxlength</label>  
+<input name="mxlgnth"type="text" maxlength=5>
+<span class="demoNotes">limit text in input and textreas - 5 in this example</span>
+  <br /> 
+
+<label for="spellcheck">spellcheck</label>  
+<input name="spellcheck" type="text" spellcheck="false">
+<span class="demoNotes">turn on (default) / off spellcheck for text input</span>
+  <br /> 
+
+<label for="mnmxstep">min max step</label>  
+<input name="mnmxstep" type="number" min="0" max="100" step="5">
+<span class="demoNotes">validate to lower and upper limit, step increments in multiples</span>
+  <br /> 
+  
+<label for="autocomp">autocomplete</label>  
+<input name="autocomp" type="text" name="name" autocomplete="off">
+<span class="demoNotes">enable(default) or disable an input autocomplete, can be set for the entire form</span>
+  <br />   
+
+<label for="acceptType">accept</label>  
+<input name="acceptType" type="file" accept="image/*">
+<span class="demoNotes">limit file input files type -  audio/*, video/*, image/*, or other valid MIME types</span>
+  <br /> 
+
+<label for="multipleFile">multiple</label>  
+<input name="multipleFile" type="file" multiple>
+<span class="demoNotes">file input can select multiple files</span>
+  <br /> 
+
+<p>A detailed list can be found <a href="http://www.wufoo.com/html5/">here</a></p>
+
+  <br />
+  <button>submit</button>  
+</form>
+<br />
+
+    <h2>HTML 5 Form Elements</h2>
+
+<form>
+<label for="meter">meter</label>  
+<meter name="meter" min="0" max="20" value="15">75%</meter>
+<span class="demoNotes">display usage / level graphically</span>
+  <br /> 
+
+<label for="progress">progress</label>  
+<progress name="progress" max="100" value="65">65%</progress>
+<span class="demoNotes">display progress towards a fixed end e.g. fileupload, form completion</span>
+  <br /> 
+
+
+<p>A detailed list can be found <a href="http://www.wufoo.com/html5/">here</a></p>
+
+  <br />
+  <button>submit</button>  
+</form>
+<br />
+
+
+
+</div>
+</body>
+</html>
