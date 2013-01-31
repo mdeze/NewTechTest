@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Javascript Module</title>
+	<title>Javascript Revealing Module</title>
 
 <script src="inc/js/jquery.js"></script>
 
@@ -75,24 +75,27 @@
 	// define "class" - note that this is
 	// an object literal
 	//
-	NS.Calculator = function(domID){
+	NS.Calculator = function(domID){	
 		// private members
-		var elem = document.getElementById(domID)
-	
-		// return public interface (as object literal)
-		return {
-			add: function(x, y){
+		var elem = document.getElementById(domID),
+
+		// private functions
+		plus = function(x, y){
 				var value = x + y;
 				elem.innerHTML = value;
 			},
-			subtract: function(x, y){
-				var value = x - y;
-				elem.innerHTML = value;
-			}
-		}
-	}
 
-
+		minus = function(x, y){
+			var value = x - y;
+			elem.innerHTML = value;
+		};
+	
+		// return public interface (as object literal)
+		return {
+			add: plus,
+			subtract: minus
+		};
+	};
 
 </script>
 
@@ -102,12 +105,13 @@
 
 <div class="demo">	
 
-<h2>Javascript Module Pattern</h2>
-<p>Pros to using the module pattern:
+<h2>Javascript Revealing Module Pattern</h2>
+<p>Pros to using the revealing module pattern:
 <ul>
 	<li>Modularize code</li>
 	<li>variable &amp; functions not in global name space</li>
 	<li>expose only public members while hiding private members</li>
+	<li>"Cleaner" way to expose public members</li>
 </ul>
 </p>
 <p>Cons to using the module pattern:
@@ -116,6 +120,10 @@
 	<li>not easy to extend</li>
 </ul>
 </p>
+
+<p>The main difference between the revealing module and module is the inclusion of 
+	fundtion definition in the return object (module) vs the pointer in the return
+object (revealing module)</p>
 <div id="target1"></div>
 <div id="target2"></div>
 
@@ -128,22 +136,27 @@ var NS = NS || {};
 // define "class" - note that this is
 // an object literal
 //
-NS.Calculator = function(domID){
+NS.Calculator = function(domID){	
 	// private members
-	var elem = document.getElementById(domID)
+	var elem = document.getElementById(domID),
 
-	// return public interface (as object literal)
-	return {
-		add: function(x, y){
+	// private functions
+	plus = function(x, y){
 			var value = x + y;
 			elem.innerHTML = value;
 		},
-		subtract: function(x, y){
-			var value = x - y;
-			elem.innerHTML = value;
-		}
-	}
-}
+
+	minus = function(x, y){
+		var value = x - y;
+		elem.innerHTML = value;
+	};
+
+	// return public interface (as object literal)
+	return {
+		add: plus,
+		subtract: minus
+	};
+};
 
 //
 // use module
