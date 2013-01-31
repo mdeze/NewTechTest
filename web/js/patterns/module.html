@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Javascript Module</title>
+
+<script src="inc/js/jquery.js"></script>
+
+<style type="text/css">
+	body
+	{
+	background-color: #56789a;
+	font-family:tahoma;
+	color: #FFFFFF;
+	}
+
+	h1
+	{
+	text-align: center;
+	}
+
+	pre
+	{
+		width: 80%;
+		margin: auto;
+		font-size: 11px;
+		border: 1px solid black;
+		padding: 5px;
+		border-radius: 4px;        
+		color: #000;
+	}
+
+	.demo
+	{
+	width: 85%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 1px solid black;
+	background-color: #FFF;
+	color: #56789a;
+	font-size: 10pt;
+	padding: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;        
+	-webkit-box-shadow: 3px 3px 10px #333333;	
+	-moz-box-shadow: 3px 3px 10px #333333;
+	box-shadow: 3px 3px 10px #333333;		
+	}
+
+	.demo h2
+	{
+	color: #CDCDCD;
+	text-align: center;
+	}
+
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		var calc = new NS.Calculator("target1");
+		calc.add(11, 15);
+
+		var c = new NS.Calculator("target2");
+		c.subtract(9, 5);
+	});
+
+	// if not already created, create object
+	var NS = NS || {};
+
+	//
+	// define "class" - note that this is
+	// an object literal
+	//
+	NS.Calculator = function(domID){
+		// private members
+		var elem = document.getElementById(domID),
+
+		// private functions
+		minus = function(x, y){
+			var value = x - y;
+			elem.innerHTML = value;
+		}
+	
+		// return public interface (as object literal)
+		return {
+			add: function(x, y){
+				var value = x + y;
+				elem.innerHTML = value;
+			},
+			subtract: minus
+		}
+	}
+
+
+
+</script>
+
+</head>
+
+<body>
+
+<div class="demo">	
+
+<h2>Javascript Module Pattern</h2>
+<p>Pros to using the module pattern:
+<ul>
+	<li>Modularize code</li>
+	<li>variable &amp; functions not in global name space</li>
+	<li>expose only public members while hiding private members</li>
+</ul>
+</p>
+<p>Cons to using the module pattern:
+<ul>
+	<li>functions are not shared across instances - heavier than prototype</li>
+	<li>not easy to extend</li>
+</ul>
+</p>
+<div id="target1"></div>
+<div id="target2"></div>
+
+<pre>
+
+// if not already created, create object
+var NS = NS || {};
+
+//
+// define "class" - note that this is
+// an object literal
+//
+NS.Calculator = function(domID){
+	// private members
+	var elem = document.getElementById(domID),
+
+	// private functions
+	minus = function(x, y){
+		var value = x - y;
+		elem.innerHTML = value;
+	}
+
+	// return public interface (as object literal)
+	return {
+		add: function(x, y){
+			var value = x + y;
+			elem.innerHTML = value;
+		},
+		subtract: minus	// external call "subtract" points to internal "minus"
+	}
+}
+
+//
+// use module
+//
+$(document).ready(function () {
+	var calc = new NS.Calculator("target1");
+	calc.add(11, 15);
+
+	var c = new NS.Calculator("target2");
+	c.subtract(9, 5);
+});
+
+</pre>
+<br />
+
+</div>
+
+</body>
+</html>
