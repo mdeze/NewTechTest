@@ -1,0 +1,189 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Javascript Revealing Prototype</title>
+
+<script src="inc/js/jquery.js"></script>
+
+<style type="text/css">
+	body
+	{
+	background-color: #56789a;
+	font-family:tahoma;
+	color: #FFFFFF;
+	}
+
+	h1
+	{
+	text-align: center;
+	}
+
+	pre
+	{
+		width: 80%;
+		margin: auto;
+		font-size: 11px;
+		border: 1px solid black;
+		padding: 5px;
+		border-radius: 4px;        
+		color: #000;
+	}
+
+	.demo
+	{
+	width: 85%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 1px solid black;
+	background-color: #FFF;
+	color: #56789a;
+	font-size: 10pt;
+	padding: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;        
+	-webkit-box-shadow: 3px 3px 10px #333333;	
+	-moz-box-shadow: 3px 3px 10px #333333;
+	box-shadow: 3px 3px 10px #333333;		
+	}
+
+	.demo h2
+	{
+	color: #CDCDCD;
+	text-align: center;
+	}
+
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		var calc = new NS.Calculator("target1");
+		calc.add(11, 15);
+
+		var c = new NS.Calculator("target2");
+		c.subtract(9, 5);
+	});
+
+	// if not already created, create object
+	var NS = NS || {};
+
+	//
+	// define "ctor" 
+	//
+	NS.Calculator = function(domID){
+		this.elem = document.getElementById(domID); // this is required to ensure instance properties
+	}
+
+	//
+	// define "class" 
+	//
+	NS.Calculator.prototype = function(){	
+		// private members
+
+		// private functions
+		var add = function(x, y){
+				var value = x + y;
+				this.elem.innerHTML = value; // must use this to refer to instance properties
+			},
+
+		subtract = function(x, y){
+				var value = x - y;
+				this.elem.innerHTML = value;
+			};
+	
+		// return public interface (as object literal)
+		return {
+			add: add,
+			subtract: subtract
+		};
+	}(); // note that the function is automatically initialized
+
+</script>
+
+</head>
+
+<body>
+
+<div class="demo">	
+
+<h2>Javascript Revealing Prototype Pattern</h2>
+<p>Pros to using the revealing module pattern:
+<ul>
+	<li>Combines Prototype and Revealing Module Patterns</li>
+	<li>Modularize code</li>
+	<li>variable &amp; functions not in global name space</li>
+	<li>expose only public members while hiding private members</li>
+	<li>Functions are loaded into memory once</li>
+	<li>Extenisble</li>
+</ul>
+</p>
+<p>Cons to using the module pattern:
+<ul>
+	<li>"this" keyword can be tricky</li>
+	<li>Constructor seperate from prototype definition</li>
+</ul>
+</p>
+
+<p>This pattern has the best features of prototype and module patterns</p>
+
+<div id="target1"></div>
+<div id="target2"></div>
+
+<pre>
+
+// if not already created, create object
+var NS = NS || {};
+
+//
+// define "ctor" 
+//
+NS.Calculator = function(domID){
+	this.elem = document.getElementById(domID); // this is required to ensure instance properties
+}
+
+//
+// define "class" 
+//
+NS.Calculator.prototype = function(){	
+	// private members
+
+	// private functions
+	var add = function(x, y){
+			var value = x + y;
+			this.elem.innerHTML = value; // must use this to refer to instance properties
+		},
+
+	subtract = function(x, y){
+			var value = x - y;
+			this.elem.innerHTML = value;
+		};
+
+	// return public interface (as object literal)
+	return {
+		add: add,
+		subtract: subtract
+	};
+}(); // note that the function is automatically initialized
+
+//
+// use module
+//
+$(document).ready(function () {
+	var calc = new NS.Calculator("target1");
+	calc.add(11, 15);
+
+	var c = new NS.Calculator("target2");
+	c.subtract(9, 5);
+});
+
+</pre>
+<br />
+
+</div>
+
+</body>
+</html>
