@@ -181,6 +181,43 @@ $(document).ready(function () {
 });
 
 </pre>
+
+<p>Managing "this"
+	<ul>
+		<li>when a function calls another function, "this" changes context</li>
+		<li>you can pass "this" into the called function - a bit of a headache as it muddies the method signatures</li>
+		<li>a nicer way is to use the call method - see example below</li>
+	</ul>
+</p>
+
+<pre>
+var FooBar;
+var BarFoo;
+
+function callingFunction() {
+	var foo = "bar";
+	var bar = "foo";
+	
+	// passing this as part of method signature
+	setFooVal(foo, this);
+
+	// using call() to pass this
+	setBarVal.call(this, bar);
+}
+
+function setFooVal(val, self)
+{
+	self.FooBar = val;
+}
+
+function setBarVal(val)
+{
+	this.BarFoo = val;
+}
+
+</pre>
+
+
 <br />
 
 </div>
