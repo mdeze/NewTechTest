@@ -1,0 +1,154 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Grid System</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <style>
+
+  .column1
+  {
+    background-color: yellow;
+  }
+
+ .column2
+  {
+    background-color: green;
+  }
+
+  .column3
+  {
+    background-color: gray;
+  }
+
+  </style>
+  
+  <script>
+    $(function() {
+
+    });
+  </script>
+
+</head>
+<body>
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Grid System</p>
+
+<p>The default Bootstrap grid system utilizes 12 columns, making for a 940px wide container. </p>
+
+<h4>Example 1 - 1 "row" with 3 "columns"</h4>
+
+<div class="row">
+  <div class="column1 span4">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet dolor sed dui. Nunc rutrum tellus id turpis. Suspendisse commodo tellus nec sem. Sed ac ligula a diam porttitor viverra. Nunc posuere libero et elit. Proin semper. 
+  </div> <!-- end column "1" -->
+  
+  <div id="column2" class="span4">
+Ut augue est, viverra in, cursus blandit, varius vitae, enim. Ut lobortis. Fusce in quam. Curabitur sem ipsum, congue adipiscing, accumsan vel, vulputate et, ante. Integer metus urna, fermentum eget, vestibulum eu, venenatis nec, nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc feugiat turpis quis metus. 
+  </div> <!-- end column "2" -->
+
+  <div class="column3 span4">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur cursus vehicula lacus. Integer eros. Fusce laoreet ligula sed nisl mattis suscipit.    
+  </div> <!-- end column "3" -->
+</div>
+
+<br />
+
+<p><strong>Code</strong></p>
+<pre>
+&lt;div class="row"&gt;
+  &lt;div id="column1" class="span4"&gt;&lt;/div&gt;
+  &lt;div id="column2" class="span4"&gt;&lt;/div&gt;
+  &lt;div id="column3" class="span4"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<br />
+
+<h4>Example 2 - 3 "rows" with 5, 1, &amp; 12 "columns"</h4>
+
+<div class="row">
+  <div class="span3"><p class="text-center">empty</p></div><!-- end column "1" -->
+  <div class="column1 span2">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet dolor sed dui. Nunc rutrum tellus id turpis. Suspendisse commodo tellus nec sem. Sed ac ligula a diam porttitor viverra. Nunc posuere libero et elit. Proin semper. 
+  </div> <!-- end column "2" -->
+  
+  <div id="column2" class="span2">
+Ut augue est, viverra in, cursus blandit, varius vitae, enim. Ut lobortis. Fusce in quam. Curabitur sem ipsum, congue adipiscing, accumsan vel, vulputate et, ante. Integer metus urna, fermentum eget, vestibulum eu, venenatis nec, nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc feugiat turpis quis metus. 
+  </div> <!-- end column "3" -->
+
+  <div class="column1 span2">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur cursus vehicula lacus. Integer eros. Fusce laoreet ligula sed nisl mattis suscipit.    
+  </div> <!-- end column "4" -->
+  <div class="span3"><p class="text-center">empty</p></div><!-- end column "5" -->
+</div>
+
+<div class="row">
+  <div class="column3 span12">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet dolor sed dui. Nunc rutrum tellus id turpis. Suspendisse commodo tellus nec sem. Sed ac ligula a diam porttitor viverra. Nunc posuere libero et elit. Proin semper. Ut augue est, viverra in, cursus blandit, varius vitae, enim. Ut lobortis. Fusce in quam. Curabitur sem ipsum, congue adipiscing, accumsan vel, vulputate et, ante. Integer metus urna, fermentum eget, vestibulum eu, venenatis nec, nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc feugiat turpis quis metus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur cursus vehicula lacus. Integer eros. Fusce laoreet ligula sed nisl mattis suscipit.    
+  </div><!-- end column "1" -->
+</div>
+
+<div class="row">
+  <div class="span1 column2"><p class="text-center">1</p></div><!-- end column "1" -->
+  <div class="span1"><p class="text-center">2</p></div><!-- end column "2" -->
+  <div class="span1 column2"><p class="text-center">3</p></div><!-- end column "3" -->
+  <div class="span1"><p class="text-center">4</p></div><!-- end column "4" -->
+  <div class="span1 column2"><p class="text-center">5</p></div><!-- end column "5" -->
+  <div class="span1"><p class="text-center">6</p></div><!-- end column "6" -->
+  <div class="span1 column2"><p class="text-center">7</p></div><!-- end column "7" -->
+  <div class="span1"><p class="text-center">8</p></div><!-- end column "8" -->
+  <div class="span1 column2"><p class="text-center">9</p></div><!-- end column "9" -->
+  <div class="span1"><p class="text-center">10</p></div><!-- end column "10" -->
+  <div class="span1 column2"><p class="text-center">11</p></div><!-- end column "11" -->
+  <div class="span1"><p class="text-center">12</p></div><!-- end column "12" -->
+</div>
+
+<br />
+
+<p><strong>Code</strong></p>
+<pre>
+&lt;div class="row"&gt;
+  &lt;div class="span3"&gt;&lt;/div&gt;&lt;!-- end column "1" --&gt;
+  &lt;div class="span2"&gt;&lt;/div&gt; &lt;!-- end column "2" --&gt;
+  &lt;div class="span2"&gt;&lt;/div&gt; &lt;!-- end column "3" --&gt;
+  &lt;div class="span2"&gt;&lt;/div&gt; &lt;!-- end column "4" --&gt;
+  &lt;div class="span3"&gt;&lt;/div&gt;&lt;!-- end column "5" --&gt;
+&lt;/div&gt;
+
+&lt;div class="row"&gt;
+  &lt;div class="span12"&gt;&lt;/div&gt;&lt;!-- end column "1" --&gt;
+&lt;/div&gt;
+
+&lt;div class="row"&gt;
+  &lt;div class="span1"&gt;&lt;/div&gt;&lt;!-- end column "1" --&gt;
+  &lt;div class="span1"&gt;&lt;/div&gt;&lt;!-- end column "2" --&gt;
+  &lt;div class="span1"&gt;&lt;/div&gt;&lt;!-- end column "3" --&gt;
+  &lt;div class="span1"&gt;&lt;/div&gt;&lt;!-- end column "4" --&gt;
+  &lt;div class="span1"&gt;&lt;/div&gt;&lt;!-- end column "5" --&gt;
+  &lt;div class="span1"&gt;&lt;/div&gt;&lt;!-- end column "6" --&gt;
+  &lt;div class="span1"&gt;&lt;/div&gt;&lt;!-- end column "7" --&gt;
+  &lt;div class="span1"&gt;&lt;/div&gt;&lt;!-- end column "8" --&gt;
+  &lt;div class="span1"&gt;&lt;/div&gt;&lt;!-- end column "9" --&gt;
+  &lt;div class="span1"&gt;&lt;/div&gt;&lt;!-- end column "10" --&gt;
+  &lt;div class="span1"&gt;&lt;/div&gt;&lt;!-- end column "11" --&gt;
+  &lt;div class="span1"&gt;&lt;/div&gt;&lt;!-- end column "12" --&gt;
+&lt;/div&gt;
+</pre>
+
+<br />
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Layout</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <style>
+  #fixedLayout
+  {
+    background-color: red;
+  }
+
+  #fluidLayout
+  {
+    background-color: gray;
+  }
+
+  #sidebar
+  {
+    background-color: yellow;
+  }
+
+  #main
+  {
+    background-color: green;
+  }
+
+  </style>
+  
+  <script>
+    $(function() {
+
+    });
+  </script>
+
+</head>
+<body>
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Layout</p>
+
+  <div id="fixedLayout" class="container">
+    <p class="text-center">I'm fixed width!</p>
+  </div>
+
+<br />
+
+  <div id="fluidLayout" class="container-fluid">
+    <p class="text-center">Check me, I'm fluid!</p>
+  </div>
+
+<br />
+
+  <div  class="container-fluid">
+    <div class="row-fluid">
+      <div id="sidebar" class="span2">
+        <p class="text-center">Sidebar content</p>
+      </div>
+      <div id="main" class="span10">
+        <p class="text-center">Body content</p>
+      </div>
+    </div>
+  </div>
+
+<br />
+
+</body>
+</html>

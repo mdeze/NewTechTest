@@ -1,0 +1,109 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Fluid Grid System</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <style>
+
+  .column1
+  {
+    background-color: yellow;
+  }
+
+ .column2
+  {
+    background-color: green;
+  }
+
+  .column3
+  {
+    background-color: gray;
+  }
+
+  </style>
+  
+  <script>
+    $(function() {
+
+    });
+  </script>
+
+</head>
+<body>
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Fluid Grid System</p>
+
+<p>The fluid grid system uses percents instead of pixels for column widths.</p>
+
+<h4>Example 1 - 1 "row" with 3 "columns"</h4>
+
+<div class="row-fluid">
+  <div class="column1 span4">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet dolor sed dui. Nunc rutrum tellus id turpis. Suspendisse commodo tellus nec sem. Sed ac ligula a diam porttitor viverra. Nunc posuere libero et elit. Proin semper. 
+  </div> <!-- end column "1" -->
+  
+  <div id="column2" class="span4">
+Ut augue est, viverra in, cursus blandit, varius vitae, enim. Ut lobortis. Fusce in quam. Curabitur sem ipsum, congue adipiscing, accumsan vel, vulputate et, ante. Integer metus urna, fermentum eget, vestibulum eu, venenatis nec, nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc feugiat turpis quis metus. 
+  </div> <!-- end column "2" -->
+
+  <div class="column3 span4">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur cursus vehicula lacus. Integer eros. Fusce laoreet ligula sed nisl mattis suscipit.    
+  </div> <!-- end column "3" -->
+</div>
+
+<br />
+<p><strong>Code</strong></p>
+
+<pre>
+&lt;div class="row-fluid"&gt;
+  &lt;div id="column1" class="span4"&gt;&lt;/div&gt;
+  &lt;div id="column2" class="span4"&gt;&lt;/div&gt;
+  &lt;div id="column3" class="span4"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<h4>Example 2 - 1 "row" with 5 "columns"</h4>
+
+<div class="row-fluid">
+  <div class="span3"><p class="text-center">empty</p></div><!-- end column "1" -->
+  <div class="column1 span2">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet dolor sed dui. Nunc rutrum tellus id turpis. Suspendisse commodo tellus nec sem. Sed ac ligula a diam porttitor viverra. Nunc posuere libero et elit. Proin semper. 
+  </div> <!-- end column "2" -->
+  
+  <div id="column2" class="span2">
+Ut augue est, viverra in, cursus blandit, varius vitae, enim. Ut lobortis. Fusce in quam. Curabitur sem ipsum, congue adipiscing, accumsan vel, vulputate et, ante. Integer metus urna, fermentum eget, vestibulum eu, venenatis nec, nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc feugiat turpis quis metus. 
+  </div> <!-- end column "3" -->
+
+  <div class="column1 span2">
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur cursus vehicula lacus. Integer eros. Fusce laoreet ligula sed nisl mattis suscipit.    
+  </div> <!-- end column "4" -->
+  <div class="span3"><p class="text-center">empty</p></div><!-- end column "5" -->
+</div>
+
+<br />
+<p><strong>Code</strong></p>
+<pre>
+&lt;div class="row-fluid"&gt;
+  &lt;div class="span3"&gt;&lt;/div&gt;&lt;!-- end column "1" --&gt;
+  &lt;div class="span2"&gt;&lt;/div&gt; &lt;!-- end column "2" --&gt;
+  &lt;div class="span2"&gt;&lt;/div&gt; &lt;!-- end column "3" --&gt;
+  &lt;div class="span2"&gt;&lt;/div&gt; &lt;!-- end column "4" --&gt;
+  &lt;div class="span3"&gt;&lt;/div&gt;&lt;!-- end column "5" --&gt;
+&lt;/div&gt;
+</pre>
+
+</body>
+</html>
