@@ -1,0 +1,129 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Forms</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <style>
+
+  </style>
+  
+  <script>
+    $(function() {
+
+    });
+  </script>
+
+</head>
+<body>
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Forms</p>
+
+<div id="fixedLayout" class="container">
+<p>Individual form controls receive styling, but without any required base class on the form tag.</p>
+
+<h4>Example 1 - Simple Form</h4>
+
+<form>
+  <fieldset>
+    <legend>Legend</legend>
+    <label>Label name</label>
+    <input type="text" placeholder="Type something…">
+    <span class="help-block">Example block-level help text here.</span>
+    <label class="checkbox">
+      <input type="checkbox"> Check me out
+    </label>
+    <button type="submit" class="btn">Submit</button>
+  </fieldset>
+</form>
+
+<h4>Example 2 - Inline Form using <code>&lt;form class="form-inline"&gt;</code></h4>
+
+<form class="form-inline">
+  <label>Username:</label>
+  <input type="text" class="input-small" placeholder="Email">
+  <label>Password:</label>
+  <input type="password" class="input-small" placeholder="Password">
+  <label class="checkbox">
+    <input type="checkbox"> Remember me
+  </label>
+  <button type="submit" class="btn">Sign in</button>
+</form>
+
+<h4>Example 3 - Supported Form Controls</h4>
+
+<form>
+  <fieldset>
+    <legend>Legend</legend>
+    
+    <label>Text Input</label>
+    <input type="text" placeholder="Type something…">
+
+    <label>Text Area</label>
+    <textarea rows="3"></textarea>
+
+    <label class="checkbox">
+      <input type="checkbox" value="">
+      Checkbox
+    </label>
+
+    <label class="radio">
+      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+      Radio 1
+    </label>
+    <label class="radio">
+      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+      Radio 2
+    </label>
+
+    <label>Inline Checkbox</label>
+    <label class="checkbox inline">
+      <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+    </label>
+    <label class="checkbox inline">
+      <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+    </label>
+    <label class="checkbox inline">
+      <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+    </label>
+
+    <label>Select</label>
+    <select>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+     
+    <label>Multiselect</label>     
+    <select multiple="multiple">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+
+
+
+    <button type="submit" class="btn">Submit</button>
+  </fieldset>
+</form>
+
+
+</div>
+</body>
+</html>
