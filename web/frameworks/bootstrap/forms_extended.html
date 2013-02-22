@@ -1,0 +1,108 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Forms Extended</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <style>
+
+  </style>
+  
+  <script>
+    $(function() {
+
+    });
+  </script>
+
+</head>
+<body>
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Forms Extended</p>
+
+<div id="fixedLayout" class="container">
+<p>Adding on top of existing browser controls, Bootstrap includes other useful form components.</p>
+
+<h4>Prepended and Appended Inputs</h4>
+
+<p>Add text or buttons before or after any text-based input.</p>
+
+<h4>Example 1 - Prepend <code>class="input-prepend"</code> &amp; Append <code>class="input-append"</code></h4>
+
+<div class="input-prepend">
+  <span class="add-on">@</span>
+  <input class="span2" id="prependedInput" type="text" placeholder="Username">
+</div>
+<div class="input-append">
+  <input class="span2" id="appendedInput" type="text">
+  <span class="add-on">.00</span>
+</div>
+
+<pre>
+&lt;div class="input-prepend"&gt;
+  &lt;span class="add-on"&gt;@&lt;/span&gt;
+  &lt;input class="span2" id="prependedInput" type="text" placeholder="Username"&gt;
+&lt;/div&gt;
+&lt;div class="input-append"&gt;
+  &lt;input class="span2" id="appendedInput" type="text"&gt;
+  &lt;span class="add-on"&gt;.00&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+
+
+<h4>Example 2 - Combined Use two instances of <code>class="add-on"</code> to prepend and append an input.</h4>
+
+<div class="input-prepend input-append">
+  <span class="add-on">$</span>
+  <input class="span2" id="appendedPrependedInput" type="text">
+  <span class="add-on">.00</span>
+</div>
+
+<pre>
+&lt;div class="input-prepend input-append"&gt;
+  &lt;span class="add-on"&gt;$&lt;/span&gt;
+  &lt;input class="span2" id="appendedPrependedInput" type="text"&gt;
+  &lt;span class="add-on"&gt;.00&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+
+<h4>Example 3 - Buttons instead of Text - use a <code>class="btn"</code></h4>
+
+<div class="input-append">
+  <input class="span2" id="appendedInputButton" type="text">
+  <button class="btn" type="button">Go!</button>
+</div>
+
+<pre>
+&lt;div class="input-append"&gt;
+  &lt;input class="span2" id="appendedInputButton" type="text"&gt;
+  &lt;button class="btn" type="button"&gt;Go!&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+
+
+<h4>Example 4 - Grid Sizing</h4>
+
+<p>Use .span1 to .span12 for inputs that match the same sizes of the grid columns.</p>
+
+<input class="span3" type="text" placeholder="Enter long phrase here">
+
+<pre>
+&lt;input class="span3" type="text" placeholder="Enter long phrase here"&gt;
+</pre>
+
+
+</div>
+</body>
+</html>
