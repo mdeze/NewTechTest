@@ -1,0 +1,134 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Table of Contents</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+  <!-- tocify -->
+  <link href="css/jquery.tocify.css" rel="stylesheet" media="screen">
+  <link href="css/prettify.css" rel="stylesheet" media="screen">
+
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/jquery-ui-1.10.1.custom.min.js"></script>
+
+  <!-- tocify -->
+  <script src="js/jquery.tocify.min.js"></script>
+  <script src="js/prettify.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <style>
+    body
+    {
+      padding-top: 20px;
+    }
+  </style>
+  
+  <script>
+    $(function() {
+
+      //Calls the tocify method on your HTML div.
+      $("#toc").tocify({ selectors: "h2, h3, h4, h5", hashGenerator: "pretty" }).data("tocify");
+
+
+    });
+  </script>
+
+</head>
+<body>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div id="toc">
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span9">
+          <div class="hero-unit">
+            <h2>Tocify</h2>
+            
+            <h2>Description</h2>
+            <p class="lead">Table of Contents</p>
+            <p>Using Tocify.js to style page table of contents</p>
+            <blockquote>site: <a href="http://gregfranko.com/jquery.tocify.js/">http://gregfranko.com/jquery.tocify.js/</a></blockquote>
+          </div>
+
+              <h2>Overview</h2>
+              <p>Automatically creates a table of contents for page using the header tags of the page. Supports nesting</p>
+                <pre>
+          &lt;h2&gt;Section Heading&lt;/h2&gt;
+            &lt;h3&gt;Sub-heading&lt;/h3&gt;
+              &lt;h4&gt;Sub-sub heading&lt;/h4&gt;
+                </pre>
+              <h2>Requirements</h2>
+              <br />
+              <p class="well"><a href="http://jquery.com" target="_blank">jQuery 1.7.2+</a> (It is always recommended to use the latest version of jQuery)
+                <br /><br />
+                <a href="http://jqueryui.com/download" target="_blank">jQueryUI Widget Factory 1.8.21+</a> (It is always recommended to use the latest version of the jQueryUI Widget Factory)
+              </p>
+              <br />
+              <h2>Optional Dependencies</h2>
+              <br />
+              <p class="well">
+              <a href="http://jqueryui.com/themeroller/" target="_blank">Twitter Bootstrap or jQueryUI CSS Theme</a>
+              <br /><br />
+              <span class="note"><strong>Note: </strong>A Twitter Bootstrap or jQueryUI theme is only required if you want to use either framework to style your table of contents.
+              </span>
+              </p>
+              <br />
+
+              <h2>Notable Features</h2>
+              <br />
+             <p class="well">
+             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet dolor sed dui. Nunc rutrum tellus id turpis. Suspendisse commodo tellus nec sem. Sed ac ligula a diam porttitor viverra. Nunc posuere libero et elit. Proin semper. Ut augue est, viverra in, cursus blandit, varius vitae, enim. Ut lobortis. Fusce in quam. Curabitur sem ipsum, congue adipiscing, accumsan vel, vulputate et, ante. Integer metus urna, fermentum eget, vestibulum eu, venenatis nec, nisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc feugiat turpis quis metus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur cursus vehicula lacus. Integer eros. Fusce laoreet ligula sed nisl mattis suscipit.
+              </p>
+
+              <h2>Browser Support</h2>
+              <br />
+              <p class="well">Maecenas nec pede sit amet mauris ultricies varius. Mauris tempus odio in est. Donec ultrices, pede eu auctor commodo, leo justo semper nisi, pulvinar tincidunt purus est non nisi. Vestibulum sodales, justo et adipiscing lacinia, nunc odio lacinia odio, blandit eleifend orci tortor ut justo. Vivamus et nisl eget nisi volutpat vehicula. In aliquam, pede et elementum bibendum, dui velit placerat tortor, non imperdiet augue enim in nibh. Fusce sit amet nunc nonummy velit tincidunt sagittis. Nunc facilisis. Aenean ultrices porta diam. Phasellus tempor placerat mi. Proin viverra tortor id libero. Nullam gravida erat vel ante. In suscipit. Mauris dolor lorem, auctor non, luctus sed, laoreet et, lectus. Cras aliquet metus nec libero. Mauris lacus. Nunc faucibus, sapien a bibendum volutpat, felis tortor volutpat ante, sit amet semper ante lorem vitae diam.</p>
+              <br />
+
+              <h2>Getting Started</h2>
+              <br />
+              <h3>Downloads</h3>
+              <br />
+              <p>
+              Suspendisse eget mauris at purus pellentesque scelerisque. In quis nibh. Aliquam erat volutpat. Curabitur auctor. Maecenas cursus lacus quis mi. Sed pretium libero a velit. Nulla semper convallis justo. Proin cursus scelerisque diam. 
+              </p>
+
+              <h3>Include CSS and JavaScript files</h3>
+              <p>Mauris iaculis eros id ante. Aliquam malesuada, ipsum id vehicula pretium, orci nisi volutpat purus, vitae aliquet velit nisi non nisl. Sed congue feugiat nunc. Integer vestibulum massa sed tortor. Nullam scelerisque eros ut libero. Mauris elementum tellus eget arcu condimentum pharetra.</p>
+
+              <h3>HTML</h3>
+              <p>Sed non ligula at erat vehicula auctor. Proin ornare nunc in orci. Nam commodo, dolor quis porta commodo, risus elit ultricies magna, semper hendrerit nibh eros nec massa. Curabitur accumsan laoreet augue. Maecenas sagittis feugiat risus.
+              </p>
+
+             
+
+              <h2>Options API</h2>
+              <br />
+              <h3>Setting Options</h3>
+              <p class="well">Ut rhoncus, purus ac imperdiet rutrum, tellus dolor malesuada mi, sed euismod neque urna vel lorem. Nullam non ante at orci laoreet bibendum. Morbi sagittis fringilla purus. Donec felis mauris, consequat ac, pretium rhoncus, scelerisque eget, velit. </p>
+              <br />
+
+              
+              
+              <h3>Getting Options</h3>
+              <p class="well">
+              Duis scelerisque velit vitae dui. Suspendisse suscipit, eros rhoncus commodo consequat, arcu dolor luctus justo, eu sodales ipsum lacus sed lorem. In malesuada, leo vitae porttitor interdum, nisl justo aliquet mauris, vel iaculis mauris nunc nec felis. Donec nunc. Vivamus consectetuer nibh a risus. Aliquam quis lacus id tortor molestie dictum. Integer bibendum, purus eget placerat scelerisque, urna est viverra pede, malesuada fermentum nulla magna quis mi.
+              </p>
+
+        </div><!--/span-->
+      </div><!--/row-->
+
+    </div><!--/.fluid-container-->
+  
+</body>
+</html>

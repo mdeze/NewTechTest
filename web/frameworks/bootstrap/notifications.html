@@ -1,0 +1,130 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Pines Notify - Notfication System</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="css/jquery.pnotify.default.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <script src="js/jquery.pnotify.min.js"></script>
+
+  <style>
+
+  </style>
+  
+  <script>
+    $(function() {
+
+      $("#btnReg").click(function(){
+        $.pnotify({
+            title: 'Regular Notice',
+            text: 'Check me out! I\'m a notice.'
+        });
+
+      });
+
+      $("#btnInfo").click(function(){
+        $.pnotify({
+                title: 'New Thing',
+                text: 'Just to let you know, something happened.',
+                type: 'info'
+              });
+      });
+
+      $("#btnSuccess").click(function(){
+        $.pnotify({
+          title: 'Regular Success',
+          text: 'That thing that you were trying to do worked!',
+          type: 'success'
+        });      
+      });
+
+      $("#btnError").click(function(){
+        $.pnotify({
+          title: 'Oh No!',
+          text: 'Something terrible happened.',
+          type: 'error'
+        });        
+      });
+
+
+
+    });
+  </script>
+
+</head>
+<body>
+<div class="container"> 
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Pines Notify - Notfication System</p>
+
+
+<a href="https://github.com/sciactive/pnotify">On Github</a> <a href="http://pinesframework.org/pnotify/">Demos</a>
+
+<h3>Example - Regular Notificaiton</h3>
+<p><button id="btnReg" class="btn btn-primary">Regular</button></p>
+
+<pre>
+  $("#btnInfo").click(function(){
+    $.pnotify({
+            title: 'Regular Notice',
+            text: 'Check me out! I\'m a notice.'
+          });      
+  })
+</pre>
+
+
+<h3>Example - Information Notificaiton</h3>
+<p><button id="btnInfo" class="btn btn-info">Info</button></p>
+
+<pre>
+  $("#btnInfo").click(function(){
+    $.pnotify({
+          title: 'New Thing',
+          text: 'Just to let you know, something happened.',
+          type: 'info'
+        });      
+  })
+</pre>
+
+
+<h3>Example - Success Notificaiton</h3>
+<p><button id="btnSuccess" class="btn btn-success">Success</button></p>
+
+<pre>
+  $("#btnInfo").click(function(){
+    $.pnotify({
+      title: 'Regular Success',
+      text: 'That thing that you were trying to do worked!',
+      type: 'success'
+    });      
+  })
+</pre>
+
+<h3>Example - Error Notificaiton</h3>
+<p><button id="btnError" class="btn btn-danger">Error</button></p>
+
+<pre>
+  $("#btnError").click(function(){
+    $.pnotify({
+      title: 'Oh No!',
+      text: 'Something terrible happened.',
+      type: 'error'
+    });        
+  });
+</pre>
+
+</div>
+</body>
+</html>
