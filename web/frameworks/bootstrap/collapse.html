@@ -1,0 +1,256 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Collapse</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <style>
+
+  </style>
+  
+  <script>
+    $(function() {
+
+      $("#historyBtn").click(function(){
+        $("#history").toggle("slow");
+      });
+
+    });
+  </script>
+
+</head>
+<body>
+<div class="container"> 
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Collapse</p>
+
+<h3>Usage</h4>
+
+<h4>Via data attributes</h4>
+<p>Just add <code>data-toggle="collapse"</code> and a <code>data-target</code> to element to automatically assign control of a collapsible element. The <code>data-target</code> attribute accepts a css selector to apply the collapse to. Be sure to add the class <code>collapse</code> to the collapsible element. If you'd like it to default open, add the additional class <code>in</code>.</p>
+
+<h4>Via JavaScript</h4>
+<p>Enable manually with: <code>$(".collapse").collapse()</code></p>
+<br>
+
+
+<h4>Example 1 - Collapse Accordian via HTML Attribues</h4>
+<br>
+<p>Have a collapsable open on load by using <code>class="collapse in"</code></p>
+<br>
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+        Collapsible Item #1
+      </a>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet dolor sed dui. Nunc rutrum tellus id turpis. Suspendisse commodo tellus nec sem. Sed ac ligula a diam porttitor viverra. Nunc posuere libero et elit. Proin semper. 
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        Collapsible Item #2
+      </a>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Column 1</th>
+              <th>Column 2</th>
+              <th>Column 3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A</td>
+              <td>B</td>
+              <td>C</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>a</td>
+              <td>b</td>
+              <td>c</td>
+            </tr>        
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<br/>
+
+<pre>
+&lt;div class="accordion" id="accordion2"&gt;
+  &lt;div class="accordion-group"&gt;
+    &lt;div class="accordion-heading"&gt;
+      &lt;a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"&gt;
+        Collapsible Item #1
+      &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div id="collapseOne" class="accordion-body collapse in"&gt;
+      &lt;div class="accordion-inner"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="accordion-group"&gt;
+    &lt;div class="accordion-heading"&gt;
+      &lt;a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"&gt;
+        Collapsible Item #2
+      &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div id="collapseTwo" class="accordion-body collapse"&gt;
+      &lt;div class="accordion-inner"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<br>
+<h4>Example 2 - Collapse Div via Button Click using HTML Attribues</h4>
+<br>
+
+<button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo">
+  Collapse Div
+</button>
+ <br/>
+ <br>
+<div id="demo" class="collapse" >
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet dolor sed dui. Nunc rutrum tellus id turpis. Suspendisse commodo tellus nec sem. Sed ac ligula a diam porttitor viverra. Nunc posuere libero et elit. Proin semper. 
+</div>
+
+<br/>
+<pre>
+&lt;button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#demo"&gt;
+  Collapse Div
+&lt;/button&gt;
+ 
+&lt;div id="demo" class="collapse" &gt;...&lt;/div&gt;
+</pre>
+
+<br>
+<h4>Example 3 - Show Hidden Collapse </h4>
+<br>
+
+<button id="historyBtn" class="btn btn-info">
+  Show Collapse
+</button>
+<br>
+<br>
+
+<div id="history" style="display:none">
+
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseA">
+        Collapsible Item #1
+      </a>
+    </div>
+    <div id="collapseA" class="accordion-body collapse">
+      <div class="accordion-inner">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam laoreet dolor sed dui. Nunc rutrum tellus id turpis. Suspendisse commodo tellus nec sem. Sed ac ligula a diam porttitor viverra. Nunc posuere libero et elit. Proin semper. 
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseB">
+        Collapsible Item #2
+      </a>
+    </div>
+    <div id="collapseB" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Column 1</th>
+              <th>Column 2</th>
+              <th>Column 3</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A</td>
+              <td>B</td>
+              <td>C</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>2</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>a</td>
+              <td>b</td>
+              <td>c</td>
+            </tr>        
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+<br/>
+
+<pre>
+//
+// wire up button click
+//
+$("#historyBtn").click(function(){
+  $("#history").toggle("slow");
+});
+
+//
+// html markup
+//
+<!-- hide colappsable -->
+&lt;div id="history" style="display:none"&gt;
+
+&lt;div class="accordion" id="accordion2"&gt;
+  &lt;div class="accordion-group"&gt;
+    &lt;div class="accordion-heading"&gt;
+      &lt;a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseA"&gt;
+        Collapsible Item #1
+      &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div id="collapseA" class="accordion-body collapse"&gt;
+      &lt;div class="accordion-inner"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+    ...
+&lt;/div&gt;
+
+&lt;/div&gt;
+<!-- /hide colappsable -->
+
+</pre>
+
+<br><br>
+
+</div>
+</body>
+</html>

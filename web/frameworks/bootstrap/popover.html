@@ -1,0 +1,170 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Popover</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <style>
+
+  </style>
+  
+  <script>
+    $(function() {
+
+      $("#popEx1").popover();
+
+      $("#popEx2").click(function(){
+
+        $("#popEx2Target").text('Click me').popover({
+          title:'dynamic popover',
+          content:'poping on the fly!',
+          placement:'right',
+        });
+
+      });
+
+    $(".popSpan").each(function(){
+      $(this).popover({
+        placement:'right',
+        title:'popover in a table',
+        content:'table poping'
+      });
+    });
+      
+
+    });
+  </script>
+
+</head>
+<body>
+<div class="container"> 
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Popover</p>
+<p>Popovers are opt-in and must be intialized</p>
+
+<h4>Example 1 - popover via HTML Attribues</h4>
+<br>
+<p><button class="btn btn-small btn-primary" id="popEx1" title='Popver title' data-content='Popover content goes here.'>Click Me</button></p>
+<br/>
+
+<pre>
+//
+// init on doc load
+//
+$("#popEx1").popover();
+
+//
+// markup
+//
+&lt;button class="btn btn-small btn-primary" id="popEx1" title='Popver title' data-content='Popover content goes here.'&gt;Click Me&lt;/button&gt;
+
+</pre>
+
+<br>
+<h4>Example 2 - Popover via Javascript</h4>
+<br>
+<p><button class="btn btn-small btn-info" id="popEx2" >Enable Popover</button></p>
+
+<p><a id="popEx2Target" href="#" class="btn">I don't do much</a></p>
+<br/>
+
+
+<pre>
+//
+// init on doc load
+//
+$("#popEx2").click(function(){
+
+  $("#popEx2Target").text('Click me').popover({
+    title:'dynamic popover',
+    content:'poping on the fly!',
+    placement:'right',
+  });
+
+});
+
+//
+// markup
+//
+&lt;p&gt;&lt;a id="popEx2Target" href="#" class="btn"&gt;Click me&lt;/a&gt;&lt;/p&gt;
+</pre>
+
+
+<br>
+<h4>Example 3 - In a table</h4>
+<p>You do not want to popover a &lt;td&gt; tag. It breaks the layout of the table when the popover displays.
+You want to wrap the item in a span etc.</p>
+
+<table class="table table-condensed" style="width: 50%; margin: auto;">
+  <caption>Click the B column rows</caption>
+  <thead>
+    <tr>
+      <th>Foo</th>
+      <th>Bar</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>A</td>
+    <td><span class="popSpan">B</span></td>
+  </tr>
+ <tr>
+    <td>C</td>
+    <td><span class="popSpan">D</span></td>
+  </tr>  
+</tbody>
+</table>
+
+<br/>
+
+<pre>
+//
+// init on doc load
+//
+$(".popSpan").each(function(){
+  $(this).popover({
+    placement:'right',
+    title:'popover in a table',
+    content:'table poping'
+  });
+});
+
+//
+// markup
+//
+&lt;table class="table table-condensed" style="width: 50%; margin: auto;"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Foo&lt;/th&gt;
+      &lt;th&gt;Bar&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;td&gt;A&lt;/td&gt;
+    &lt;td&gt;&lt;span class="popSpan"&gt;B&lt;/span&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;tr&gt;
+    &lt;td&gt;C&lt;/td&gt;
+    &lt;td&gt;&lt;span class="popSpan"&gt;D&lt;/span&gt;&lt;/td&gt;
+  &lt;/tr&gt;  
+&lt;/tbody&gt;
+&lt;/table&gt;
+</pre>
+
+
+</div>
+</body>
+</html>
