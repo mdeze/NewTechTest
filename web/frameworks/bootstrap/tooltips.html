@@ -1,0 +1,171 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Tooltips</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <style>
+
+  </style>
+  
+  <script>
+    $(function() {
+      $(".ttExample").each(function(){
+        $(this).tooltip();
+      });
+
+      $("#ttJsEx").tooltip({
+        placement:'bottom',
+        title:'dynamic tooltip is how I roll'
+      });
+
+      $(".ttSpan").each(function(){
+        $(this).tooltip({
+          placement:'right',
+          title:'tooltip in a table'
+        });
+      });
+
+    });
+  </script>
+
+</head>
+<body>
+<div class="container"> 
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Tooltips</p>
+<p>Tooltips are opt-in and must be intialized</p>
+
+<h4>Example 1 - Tooltip via HTML Attribues</h4>
+<br>
+<a class="ttExample" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">Tooltip on top</a>&nbsp;
+<a class="ttExample" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on top">Tooltip on right</a>
+
+<br/>
+<br/>
+
+<pre>
+
+//
+// init on doc load
+//
+$(".ttExample").each(function(){
+  $(this).tooltip();
+});
+
+//
+// markup
+//
+&lt;a class="ttExample" href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">
+Tooltip on top&lt;/a&gt;&nbsp;
+&lt;a class="ttExample" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Tooltip on top"&gt;
+Tooltip on right&lt;/a&gt;
+
+</pre>
+
+<br>
+<h4>Example 2 - Tooltip via Javascript</h4>
+<br>
+
+<span id="ttJsEx"  >Tooltip me</span>
+
+
+<br/>
+<br/>
+
+<pre>
+//
+// init on doc load
+//
+$("#ttJsEx").tooltip({
+  placement:'bottom',
+  title:'dynamic tooltip is how I roll'
+});
+
+//
+// markup
+//
+&lt;span id="ttJsEx" &gt;Tooltip me&lt;/span&gt;
+</pre>
+
+
+<br>
+<h4>Example 3 - In a table</h4>
+<p>You do not want to tooltip a &lt;td&gt; tag. It breaks the layout of the table when the tooltip displays.
+You want to wrap the item in a span etc.</p>
+
+<table class="table table-condensed" style="width: 50%; margin: auto;">
+  <caption>Hover over the B column rows</caption>
+  <thead>
+    <tr>
+      <th>Foo</th>
+      <th>Bar</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>A</td>
+    <td><span class="ttSpan">B</span></td>
+  </tr>
+ <tr>
+    <td>C</td>
+    <td><span class="ttSpan">D</span></td>
+  </tr>  
+</tbody>
+</table>
+
+<br/>
+
+<pre>
+//
+// init on doc load
+//
+$(".ttSpan").each(function(){
+  $(this).tooltip({
+    placement:'right',
+    title:'tooltip in a table'
+  });
+});
+
+
+//
+// markup
+//
+&lt;table class="table table-condensed" style="width: 50%; margin: auto;"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Foo&lt;/th&gt;
+      &lt;th&gt;Bar&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+  &lt;tr&gt;
+    &lt;td&gt;A&lt;/td&gt;
+    &lt;td&gt;&lt;span class="ttSpan"&gt;B&lt;/span&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+ &lt;tr&gt;
+    &lt;td&gt;C&lt;/td&gt;
+    &lt;td&gt;&lt;span class="ttSpan"&gt;D&lt;/span&gt;&lt;/td&gt;
+  &lt;/tr&gt;  
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+</pre>
+
+
+</div>
+</body>
+</html>
