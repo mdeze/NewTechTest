@@ -1,0 +1,151 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Navbar</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <style>
+
+    body
+    {
+      padding-top: 40px; 
+      padding-bottom: 40px; 
+    }
+
+  </style>
+  
+  <script>
+    $(function() {
+
+    });
+  </script>
+
+</head>
+<body>
+<div class="container"> 
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Navbar</p>
+
+
+<br>
+<h4>Example 1 - Nav Bar Fixed To Top</h4>
+<br>
+
+<p>Add <code>class="navbar navbar-fixed-top"</code> to the outter div and remember to account for the hidden area underneath it by adding at least 40px padding to the <code>&lt;body&gt;</code>. Be sure to add this after the core Bootstrap CSS and before the optional responsive CSS.</p>
+
+<p>Create a full-width navbar that scrolls away with the page by adding <code>class="navbar navbar-static-top"</code>. Unlike the .navbar-fixed-top class, you do not need to change any padding on the body.</p>
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <a class="brand" href="#">Title</a>
+    <ul class="nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li ><a href="navbar.html">Navbar 1</a></li>
+      <li><a href="forms.html">Profile</a></li>
+      <li class="divider-vertical"></li>
+      <li><a href="index.html">Settings</a></li>
+    </ul>
+  </div>
+</div>
+
+<br/>
+
+<pre>
+//
+// style
+//
+&lt;style&gt;
+
+  body
+  {
+    padding-top: 40px; 
+  }
+
+&lt;/style&gt;
+
+//
+// markup
+//
+&lt;div class="navbar navbar-fixed-top"&gt;
+  &lt;div class="navbar-inner"&gt;
+    &lt;a class="brand" href="#"&gt;Title&lt;/a&gt;
+    &lt;ul class="nav"&gt;
+      &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li &gt;&lt;a href="navbar.html"&gt;Navbar 1&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="forms.html"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="index.html"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<br>
+<h4>Example 2 - Nav Bar Fixed To Bottom</h4>
+<br>
+<p>Add <code>class="navbar navbar-fixed-bottom"</code> to the outter div</p>
+
+<div class="navbar navbar-fixed-bottom navbar-inverse">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li ><a href="navbar.html">Navbar 1</a></li>
+      <li class="divider-vertical"></li>
+      <li ><a href="#">Link B</a></li>
+      <li class="divider-vertical"></li>
+      <li class="active"><a href="#">Link C</a></li>
+    </ul>
+  </div>
+</div>
+
+<br/>
+
+<pre>
+//
+// style
+//
+&lt;style&gt;
+
+  body
+  {
+    padding-bottom: 40px; 
+  }
+
+&lt;/style&gt;
+
+//
+// markup
+//  
+&lt;div class="navbar navbar-fixed-bottom navbar-inverse"&gt;
+  &lt;div class="navbar-inner"&gt;
+    &lt;ul class="nav"&gt;
+      &lt;li &gt;&lt;a href="navbar.html"&gt;Navbar 1&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+      &lt;li &gt;&lt;a href="#"&gt;Link B&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+      &lt;li class="active"&gt;&lt;a href="#"&gt;Link C&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+
+
+
+
+
+
+</div>
+</body>
+</html>

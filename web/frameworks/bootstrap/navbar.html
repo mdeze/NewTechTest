@@ -1,0 +1,189 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Navbar</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <style>
+
+  </style>
+  
+  <script>
+    $(function() {
+
+    });
+  </script>
+
+</head>
+<body>
+<div class="container"> 
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Navbar</p>
+
+
+<br>
+<h4>Example 1 - Simple Nav Bar</h4>
+<br>
+<p>Navbars are static (not fixed to the top) and include support for a project name and basic navigation. </p>
+<p>Have a <strong>Brand</strong> link to your home page using <code>class="brand" href="#"</code></p>
+<p>Identify selected link with <code>class="active"</code></p>
+<p>Create link dividers with <code>&lt;li class="divider-vertical"&gt;&lt;/li&gt;</code></p>
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="#">Title</a>
+    <ul class="nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="forms.html">Profile</a></li>
+      <li class="divider-vertical"></li>
+      <li><a href="index.html">Settings</a></li>
+    </ul>
+  </div>
+</div>
+
+<br/>
+
+<pre>
+&lt;div class="navbar"&gt;
+  &lt;div class="navbar-inner"&gt;
+    &lt;a class="brand" href="#"&gt;Title&lt;/a&gt;
+    &lt;ul class="nav"&gt;
+      &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="forms.html"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+      &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="index.html"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<br>
+<h4>Example 2 - Nav Bar Forms</h4>
+<br>
+<p>To properly style and position a form within the navbar, add the appropriate classes as shown below.</p>
+
+<div class="navbar">
+  <div class="navbar-inner">
+    <form class="navbar-form pull-right">
+      <input type="text" class="span2">
+      <button type="submit" class="btn">Submit</button>
+    </form>
+  </div>
+</div>
+
+<br/>
+
+<pre>
+&lt;div class="navbar"&gt;
+  &lt;div class="navbar-inner"&gt;  
+    &lt;form class="navbar-form pull-right"&gt;
+      &lt;input type="text" class="span2"&gt;
+      &lt;button type="submit" class="btn"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+
+<br>
+<h4>Example 3 - Nav Bar With Dropdowns</h4>
+<br>
+<p>Disable menu options with <code>&lt;li class="disabled"&gt;</code></p>
+<p>Submenu with <code>&lt;li class="dropdown-submenu"&gt;</code></p>
+<p>Inverse color style with <code>class="navbar navbar-inverse"</code> </p>
+
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <ul class="nav">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+          <li><a tabindex="-1" href="#">Action</a></li>
+          <li class="disabled"><a tabindex="-1" href="#">Another action</a></li>
+          <li><a tabindex="-1" href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a tabindex="-1" href="#">Separated link</a></li>
+        </ul>
+      </li>
+      <li class="divider-vertical"></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+          <li><a tabindex="-1" href="#">Action</a></li>
+          <li><a tabindex="-1" href="#">Another action</a></li>
+          <li><a tabindex="-1" href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a tabindex="-1" href="#">Separated link</a></li>
+          <li class="dropdown-submenu">
+            <a tabindex="-1" href="#">More options</a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+              <li><a tabindex="-1" href="#">More Option 1</a></li>
+              <li><a tabindex="-1" href="#">More Option 2</a></li>
+              <li><a tabindex="-1" href="#">More Option 3</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+</div>
+
+<pre>
+&lt;div class="navbar navbar-inverse"&gt;
+  &lt;div class="navbar-inner"&gt;
+    &lt;ul class="nav"&gt;
+      &lt;li class="dropdown"&gt;
+        &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;Account&lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
+        &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+          &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="disabled"&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="divider"&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+      &lt;li class="dropdown"&gt;
+        &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;Settings&lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
+        &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+          &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="divider"&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="dropdown-submenu"&gt;
+            &lt;a tabindex="-1" href="#"&gt;More options&lt;/a&gt;
+            &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;More Option 1&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;More Option 2&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;More Option 3&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+<br>
+<h4>Example 4 - <a href="navbar2.html">Nav Bar Positioning</a></h4>
+<br>
+
+
+</div>
+</body>
+</html>
