@@ -20,6 +20,9 @@
   </style>
   
   <script>
+  var endDate;
+  var startDate;
+
     $(function() {
 
       $('#dp1').datepicker()
@@ -27,10 +30,62 @@
           $('#dp1').datepicker('hide')
         });
 
+      $('#dpMonths').datepicker()
+        .on('changeDate', function(ev){
+            $('#dpMonths').datepicker('hide')
+          });
+
       $('#btnDPVal1').click(function(){
           var calVal = $('#dp1Date').val();
           alert(calVal);
       });
+
+      $('#btnDPMonthVal').click(function(){
+          var calVal = $('#monthDate').val();
+          alert(calVal);
+      });
+
+      //
+      // disabling dates demo
+      //
+      var nowTemp = new Date();
+      var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+      // init start date, set end date default based on selected value
+      startDate = $('#dp2').datepicker({
+          onRender: function(date) {
+            return date.valueOf() < now.valueOf() ? 'disabled' : '';
+          }
+        })
+        .on('changeDate', function(ev){
+          var newDate = new Date(ev.date)
+          newDate.setDate(newDate.getDate() + 7);
+          endDate.setValue(newDate); 
+          $('#dp2').datepicker('hide')
+        }).data('datepicker');
+
+      // init end date date, disable invalidate dates based on start date selected value
+      endDate = $('#dp3').datepicker({
+        onRender: function(date) {
+          var val = '';
+          var futureDate = new Date(this.date); 
+          futureDate.setDate(futureDate.getDate() + 7);
+
+          // disable dates previous to start date
+          if (date.valueOf() <= startDate.date.valueOf())
+          {
+            val = 'disabled';
+          }
+          // disable dates past end date + 7 days
+          if (date.valueOf() >= futureDate.valueOf())
+          {
+            val = 'disabled';
+          }
+          return val;
+        }})
+        .on('changeDate', function(ev){
+          $('#dp3').datepicker('hide')
+        }).data('datepicker');
 
     });
   </script>
@@ -72,7 +127,6 @@ $(function() {
       $('#dp1').datepicker('hide')
     });
 
-
   // fetch date value
   $('#btnDPVal1').click(function(){
       var calVal = $('#dp1Date').val();
@@ -89,7 +143,132 @@ $(function() {
 &lt;/div&gt;
 </pre>
 
+<br>
+<h4>Example 2 - Limit to Month/Year Selection</h4>
+<br>
+<p>Can not select individual days only month / year</p>
 
+<div class="input-append date" id="dpMonths" data-date="02/2012" data-date-format="mm/yyyy" data-date-viewmode="months" data-date-minviewmode="months">
+<input id="monthDate" class="span2" size="16" type="text" value="" readonly="">
+<span class="add-on"><i class="icon-calendar"></i></span>
+</div>
+
+<p><button id="btnDPMonthVal" class="btn btn-info">Show Date Value</button>
+</p>
+<br/>
+<pre>
+//
+// script
+//
+$(function() {
+  $('#dpMonths').datepicker()
+    .on('changeDate', function(ev){
+        $('#dpMonths').datepicker('hide')
+      });
+
+  $('#btnDPMonthVal').click(function(){
+      var calVal = $('#monthDate').val();
+      alert(calVal);
+  });
+
+});
+
+//
+// markup
+//
+&lt;div class="input-append date" id="dpMonths" data-date="02/2012" data-date-format="mm/yyyy" data-date-viewmode="months" data-date-minviewmode="months"&gt;
+&lt;input id="monthDate" class="span2" size="16" type="text" value="" readonly=""&gt;
+&lt;span class="add-on"&gt;&lt;i class="icon-calendar"&gt;&lt;/i&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+</pre>
+
+<br>
+<h4>Example 3 - Limit to Available Dates</h4>
+<br>
+<p>Example disables past dates for the default start date and sets the end date default to 7 days after selected start date with 6 days + or - to select from.</p>
+<p>Can also be used to enforce valid date ranges. See website for good example of range enforcement</p>
+
+<div class="input-append date" id="dp2" data-date="03-18-2013" data-date-format="mm-dd-yyyy">
+  <label for="dp2Date"><strong>Start Date</strong></label>
+  <input class="span2" id="dp2Date" size="16" type="text" value="" readonly>
+  <span class="add-on"><i class="icon-calendar"></i></span>
+</div>
+
+<div class="input-append date" id="dp3" data-date="03-18-2013" data-date-format="mm-dd-yyyy">
+  <label for="dp3Date"><strong>End Date</strong></label>
+  <input class="span2" id="dp3Date" size="16" type="text" value="" readonly>
+  <span class="add-on"><i class="icon-calendar"></i></span>
+</div>
+
+<br/>
+<pre>
+//
+// script
+//
+$(function() {
+
+  //
+  // disabling dates demo
+  //
+  var nowTemp = new Date();
+  var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+  // init start date, set end date default based on selected value
+  startDate = $('#dp2').datepicker({
+      onRender: function(date) {
+        return date.valueOf() < now.valueOf() ? 'disabled' : '';
+      }
+    })
+    .on('changeDate', function(ev){
+      var newDate = new Date(ev.date)
+      newDate.setDate(newDate.getDate() + 7);
+      endDate.setValue(newDate); 
+      $('#dp2').datepicker('hide')
+    }).data('datepicker');
+
+  // init end date date, disable invalidate dates based on start date selected value
+  endDate = $('#dp3').datepicker({
+    onRender: function(date) {
+      var val = '';
+      var futureDate = new Date(this.date); 
+      futureDate.setDate(futureDate.getDate() + 7);
+
+      // disable dates previous to start date
+      if (date.valueOf() <= startDate.date.valueOf())
+      {
+        val = 'disabled';
+      }
+      // disable dates past end date + 7 days
+      if (date.valueOf() >= futureDate.valueOf())
+      {
+        val = 'disabled';
+      }
+      return val;
+    }})
+    .on('changeDate', function(ev){
+      $('#dp3').datepicker('hide')
+    }).data('datepicker');
+
+});
+
+//
+// markup
+//
+
+&lt;div class="input-append date" id="dp2" data-date="03-18-2013" data-date-format="mm-dd-yyyy"&gt;
+  &lt;label for="dp2Date"&gt;&lt;strong&gt;Start Date&lt;/strong&gt;&lt;/label&gt;
+  &lt;input class="span2" id="dp2Date" size="16" type="text" value="" readonly&gt;
+  &lt;span class="add-on"&gt;&lt;i class="icon-calendar"&gt;&lt;/i&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;div class="input-append date" id="dp3" data-date="03-18-2013" data-date-format="mm-dd-yyyy"&gt;
+  &lt;label for="dp3Date"&gt;&lt;strong&gt;End Date&lt;/strong&gt;&lt;/label&gt;
+  &lt;input class="span2" id="dp3Date" size="16" type="text" value="" readonly&gt;
+  &lt;span class="add-on"&gt;&lt;i class="icon-calendar"&gt;&lt;/i&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+</pre>
 
 
 
