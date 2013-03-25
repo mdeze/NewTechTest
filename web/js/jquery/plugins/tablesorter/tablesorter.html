@@ -1,0 +1,364 @@
+<html>
+<head>
+
+    <style type="text/css">
+    body
+    {
+        background-color: #56789a;
+        font-family:tahoma;
+        color: #FFFFFF;
+    }
+    
+    h1
+    {
+        text-align: center;
+    }
+    
+    .demo
+    {
+        width: 65%;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+		border: 1px solid black;
+		background-color: #FFF;
+		color: #000;
+		font-size: 10pt;
+		padding: 4px;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;        
+        -webkit-box-shadow: 3px 3px 10px #333333;	
+        -moz-box-shadow: 3px 3px 10px #333333;
+        box-shadow: 3px 3px 10px #333333;		
+    }
+    
+    .demo h2
+    {
+        color: #CDCDCD;
+        text-align: center;
+    }
+
+    pre
+    {
+        border: thin solid #666666;
+        background-color: #CCCCCC;
+        padding: 5px;
+        margin: 20px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;        
+        -webkit-box-shadow: 3px 3px 10px #333333;   
+        -moz-box-shadow: 3px 3px 10px #333333;
+        box-shadow: 3px 3px 10px #333333;        
+    }
+
+    #demoTable
+    {
+        margin: auto;
+    }
+    
+    </style>
+
+    <link rel="stylesheet" href="css/tablesorter.css">
+    
+    <script src="js/jquery.js"></script>
+	<script src="js/jquery.tablesorter.min.js"></script>
+    
+	<script type="text/javascript">
+	    $(document).ready(function() 
+	            { 
+					// init table sorting
+	                $("#demoTable").tablesorter({
+	                    widgets: ['zebra'],
+	                    headers: {
+								4: { sorter: false },
+	                            5: {
+	                                sorter:'month-year-date'
+	                            },
+	                            6: {
+	                                sorter:'large-currency'
+	                            },
+	                        7: {
+	                            sorter:'large-currency'
+	                        },
+							8: { sorter: false }
+	                    }                
+	                });
+	            } 
+	        );     
+
+		    // 
+			// currency sorting support
+			//
+		    $.tablesorter.addParser({
+		            id: 'large-currency',
+		            is: function(s) {
+		                    return false;
+		            },
+		            format: function(s) {
+		                var new_currency = s.replace(new RegExp(/[£$€]/g), ""); 
+
+		                return $.tablesorter.formatFloat(new_currency.replace(/,/gi, ''));
+		            },
+		            type: 'numeric'
+		    });
+
+		    // 
+			// month/year sorting support
+			//
+		    $.tablesorter.addParser({
+		            id: 'month-year-date',
+		            is: function(s) {
+		                    return false;
+		            },
+		            format: function(s) {
+		                var dateSplit = s.split('/');
+
+		                if(2 !== dateSplit.length)
+		                        return 0;
+
+		                return new Date(dateSplit[1], dateSplit[0], 1);
+		            },
+		            type: 'numeric'
+		    });
+
+	</script>
+
+
+
+</head>
+<body>
+<h1>UI JQuery Plugin Demo</h1>
+
+<div class="demo">
+<h2>Sorting Table</h2>
+<p>Inline table sorting</p>
+
+
+<h3>Example 1</h3>
+ <table width='95%' cellspacing='0' cellspacing='2' id='demoTable' class='tablesorter'>
+    <thead id='TblHeader'>
+   <tr>
+    <th valign='top' title='Click to sort by Sales Rep'>Sales Rep&nbsp;</th>
+    <th valign='top' title='Click to sort by Manufacturer'>Manufacturer&nbsp;</th>
+    <th valign='top' title='Click to sort by Program'>Program&nbsp;</th>
+    <th valign='top' title='Click to sort by Invoice Type'>Invoicing&nbsp;</th>
+    <th valign='top' >Mailing Since&nbsp;</th>
+    <th valign='top' >Ends&nbsp;</th>
+    <th valign='top' title='Click to sort by Budget'>Net Letter Bgt&nbsp;</th>
+    <th valign='top' title='Click to sort by Remaining Budget'>EOP Bgt Remain Forecast&nbsp;</th>
+    <th valign='top' >Month Over Bgt&nbsp;</th>
+   </tr>
+    </thead>
+    <tbody>
+    <tr>
+     <td title=''>n/a&nbsp;</td>
+     <td >Eisai Co.,LTD       &nbsp;</td>
+     <td><a href='ProgramSalesDetail.php?program_id=30'>Aciphex DirectAdhere </a>&nbsp;</td>
+     <td>Unknown&nbsp;</td>
+     <td>06/01/2012&nbsp;</td>
+     <td>12/2012&nbsp;</td>
+     <td>$57,750&nbsp;</td>    
+     <td>$69,547&nbsp;</td>
+     <td>n/a&nbsp;</td>    
+    </tr>
+    <tr>
+     <td title=''>n/a&nbsp;</td>
+     <td >GSK                 &nbsp;</td>
+     <td><a href='ProgramSalesDetail.php?program_id=1'>Advair Diskus DirectAdhere </a>&nbsp;</td>
+     <td>Unknown&nbsp;</td>
+     <td>06/01/2012&nbsp;</td>
+     <td>12/2012&nbsp;</td>
+     <td>$1,109,119&nbsp;</td>    
+     <td><font color='red'>$-152,368</font>&nbsp;</td>
+     <td>12/01/2012&nbsp;</td>    
+    </tr>
+    <tr>
+     <td title=''>n/a&nbsp;</td>
+     <td >Merck & Co., Inc.   &nbsp;</td>
+     <td><a href='ProgramSalesDetail.php?program_id=6'>Asmanex DirectAdhere </a>&nbsp;</td>
+     <td>Unknown&nbsp;</td>
+     <td>03/01/2012&nbsp;</td>
+     <td>12/2012&nbsp;</td>
+     <td>$497,211&nbsp;</td>    
+     <td>$232,532&nbsp;</td>
+     <td>n/a&nbsp;</td>    
+    </tr>
+    <tr>
+     <td title=''>n/a&nbsp;</td>
+     <td >Daiichi Sankyo      &nbsp;</td>
+     <td><a href='ProgramSalesDetail.php?program_id=7'>Azor DirectAdhere </a>&nbsp;</td>
+     <td>Unknown&nbsp;</td>
+     <td>01/01/2012&nbsp;</td>
+     <td>3/2013&nbsp;</td>
+     <td>$351,765&nbsp;</td>    
+     <td>$109,792&nbsp;</td>
+     <td>n/a&nbsp;</td>    
+    </tr>
+    <tr>
+     <td title=''>n/a&nbsp;</td>
+     <td >Amylin              &nbsp;</td>
+     <td><a href='ProgramSalesDetail.php?program_id=13'>Byetta DirectAdhere </a>&nbsp;</td>
+     <td>Unknown&nbsp;</td>
+     <td>01/01/2012&nbsp;</td>
+     <td>12/2012&nbsp;</td>
+     <td>$334,124&nbsp;</td>    
+     <td>$8,456&nbsp;</td>
+     <td>n/a&nbsp;</td>    
+    </tr>
+    <tr>
+     <td title=''>n/a&nbsp;</td>
+     <td >Pfizer USPG         &nbsp;</td>
+     <td><a href='ProgramSalesDetail.php?program_id=15'>Celebrex DirectAdhere </a>&nbsp;</td>
+     <td>Unknown&nbsp;</td>
+     <td>no mail&nbsp;</td>
+     <td>12/2012&nbsp;</td>
+     <td>$481,040&nbsp;</td>    
+     <td>$504,540&nbsp;</td>
+     <td>n/a&nbsp;</td>    
+    </tr>
+    <tr>
+     <td title=''>n/a&nbsp;</td>
+     <td >Bayer Healthcare    &nbsp;</td>
+     <td><a href='ProgramSalesDetail.php?program_id=17'>Contour DirectAdhere </a>&nbsp;</td>
+     <td>Unknown&nbsp;</td>
+     <td>07/01/2012&nbsp;</td>
+     <td>3/2013&nbsp;</td>
+     <td>$522,683&nbsp;</td>    
+     <td>$384,741&nbsp;</td>
+     <td>n/a&nbsp;</td>    
+    </tr>
+    <tr>
+     <td title=''>n/a&nbsp;</td>
+     <td >Pfizer USPG         &nbsp;</td>
+     <td><a href='ProgramSalesDetail.php?program_id=18'>Detrol LA DirectAdhere </a>&nbsp;</td>
+     <td>Unknown&nbsp;</td>
+     <td>01/01/2012&nbsp;</td>
+     <td>12/2012&nbsp;</td>
+     <td>$430,779&nbsp;</td>    
+     <td>$37,263&nbsp;</td>
+     <td>n/a&nbsp;</td>    
+    </tr>
+    <tr>
+     <td title=''>n/a&nbsp;</td>
+     <td >Takeda Pharmaceutica&nbsp;</td>
+     <td><a href='ProgramSalesDetail.php?program_id=19'>Dexilant (Kapidex) DirectAdhere </a>&nbsp;</td>
+     <td>Unknown&nbsp;</td>
+     <td>04/01/2012&nbsp;</td>
+     <td>3/2013&nbsp;</td>
+     <td>$1,071,505&nbsp;</td>    
+     <td><font color='red'>$-699,343</font>&nbsp;</td>
+     <td>11/01/2012&nbsp;</td>    
+    </tr>
+    <tr>
+     <td title=''>n/a&nbsp;</td>
+     <td >Novartis Pharmaceuti&nbsp;</td>
+     <td><a href='ProgramSalesDetail.php?program_id=20'>Diovan/HCT  </a>&nbsp;</td>
+     <td>Unknown&nbsp;</td>
+     <td>no mail&nbsp;</td>
+     <td>12/2012&nbsp;</td>
+     <td>$0&nbsp;</td>    
+     <td>$0&nbsp;</td>
+     <td>n/a&nbsp;</td>    
+    </tr>
+    <tr>
+     <td title=''>n/a&nbsp;</td>
+     <td >Merck & Co., Inc.   &nbsp;</td>
+     <td><a href='ProgramSalesDetail.php?program_id=21'>Dulera  </a>&nbsp;</td>
+     <td>Unknown&nbsp;</td>
+     <td>no mail&nbsp;</td>
+     <td>12/2012&nbsp;</td>
+     <td>$0&nbsp;</td>    
+     <td>$0&nbsp;</td>
+     <td>n/a&nbsp;</td>    
+    </tr>
+    <tr>
+     <td title=''>n/a&nbsp;</td>
+     <td >Daiichi Sankyo      &nbsp;</td>
+     <td><a href='ProgramSalesDetail.php?program_id=22'>Effient  </a>&nbsp;</td>
+     <td>Unknown&nbsp;</td>
+     <td>no mail&nbsp;</td>
+     <td>12/2012&nbsp;</td>
+     <td>$0&nbsp;</td>    
+     <td>$0&nbsp;</td>
+     <td>n/a&nbsp;</td>    
+    </tr>
+    <tr>
+     <td title=''>n/a&nbsp;</td>
+     <td >Amgen               &nbsp;</td>
+     <td><a href='ProgramSalesDetail.php?program_id=23'>EnbrelRA  </a>&nbsp;</td>
+     <td>Unknown&nbsp;</td>
+     <td>no mail&nbsp;</td>
+     <td>12/2012&nbsp;</td>
+     <td>$0&nbsp;</td>    
+     <td>$0&nbsp;</td>
+     <td>n/a&nbsp;</td>    
+    </tr>
+    </tbody>
+</table>
+
+<h3>Source Code</h3>
+<pre>
+$(document).ready(function() {
+
+    // init table sorting
+    $("#demoTable").tablesorter({
+      widgets: ['zebra'],
+      headers: {
+            4: { sorter: false },
+            5: {
+              sorter:'month-year-date'
+            },
+            6: {
+              sorter:'large-currency'
+            },
+            7: {
+            sorter:'large-currency'
+            },
+            8: { sorter: false }
+      }                
+    });
+});     
+
+// 
+// currency sorting support
+//
+$.tablesorter.addParser({
+   id: 'large-currency',
+   is: function(s) {
+           return false;
+   },
+   format: function(s) {
+       var new_currency = s.replace(new RegExp(/[£$€]/g), ""); 
+
+       return $.tablesorter.formatFloat(new_currency.replace(/,/gi, ''));
+   },
+   type: 'numeric'
+});
+
+// 
+// month/year sorting support
+//
+$.tablesorter.addParser({
+   id: 'month-year-date',
+   is: function(s) {
+           return false;
+   },
+   format: function(s) {
+       var dateSplit = s.split('/');
+
+       if(2 !== dateSplit.length)
+               return 0;
+
+       return new Date(dateSplit[1], dateSplit[0], 1);
+   },
+   type: 'numeric'
+});
+</pre>
+
+
+</div>
+
+</body>
+</html>

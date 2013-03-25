@@ -1,0 +1,112 @@
+<html>
+<head>
+
+    <style type="text/css">
+    body
+    {
+        background-color: #56789a;
+        font-family:tahoma;
+        color: #FFFFFF;
+    }
+    
+    h1
+    {
+        text-align: center;
+    }
+    
+    .demo
+    {
+        width: 65%;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+		border: 1px solid black;
+		background-color: #FFF;
+		color: #000;
+		font-size: 10pt;
+		padding: 4px;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;        
+        -webkit-box-shadow: 3px 3px 10px #333333;	
+        -moz-box-shadow: 3px 3px 10px #333333;
+        box-shadow: 3px 3px 10px #333333;		
+    }
+    
+    .demo h2
+    {
+        color: #CDCDCD;
+        text-align: center;
+    }
+
+    pre
+    {
+        border: thin solid #666666;
+        background-color: #CCCCCC;
+        padding: 5px;
+        margin: 20px;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;        
+        -webkit-box-shadow: 3px 3px 10px #333333;   
+        -moz-box-shadow: 3px 3px 10px #333333;
+        box-shadow: 3px 3px 10px #333333;        
+    }
+
+    #demoTable
+    {
+        margin: auto;
+    }
+    
+    </style>
+
+    
+    <script src="js/jquery.js"></script>
+	<script src="js/jquery.number.min.js"></script>
+    
+	<script type="text/javascript">
+	    $(document).ready(function() { 
+			
+            // wire up format button
+            $("#fmtBtn").click(function(){
+                $("#testNum").number(true);
+            });
+        });     
+	</script>
+
+
+
+</head>
+<body>
+<h1>UI JQuery Plugin Demo</h1>
+
+<div class="demo">
+<h2>Number Formatting</h2>
+<p>Format numbers - decimals, commas, currency etc.</p>
+<p><strong>Website:</strong> <a href="http://www.github.com/teamdf/jquery-number">github.com/teamdf/jquery-number</a></p>
+
+
+<h3>Example 1</h3>
+<p>Unformatted number: <span id="testNum">161245</span></p>
+<p><button id="fmtBtn">Format It!</button> </p>
+
+<h3>Source Code</h3>
+<pre>
+&lt;script src="js/jquery.number.min.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+    $(document).ready(function() { 
+        
+        // wire up format button
+        $("#fmtBtn").click(function(){
+            $("#testNum").number(true);
+        });
+    });     
+&lt;/script&gt;
+</pre>
+
+
+</div>
+
+</body>
+</html>
