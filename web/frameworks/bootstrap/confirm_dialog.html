@@ -1,0 +1,77 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Confirm Modal Dialog</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-confirm.js"></script>
+
+  <style>
+
+  </style>
+  
+  <script>
+    $(function() {
+
+      $('#confirmBtn').click(function(){
+        $('#confirmAction').confirmModal({
+          heading: 'Confirm Your Action',
+          body: 'Action confirmation details',
+          callback: function(){
+            console.log('you confirm dialog called the callback');
+          }
+        });
+      });
+
+    });
+  </script>
+
+</head>
+<body>
+<div class="container"> 
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Confirm Modal Dialog</p>
+<p><a href="http://mvcdiary.com/projects/Home/Bootstrap/Confirm-Modal">Web Site</a> A callback function is called when the confirm button is clicked</p>  
+
+<h3>Example - Regular Usage</h3>
+
+<p><button id="confirmBtn" class="btn btn-primary">Confirm Action</button></p>
+
+<pre>
+// load plugin
+&lt;script src="js/bootstrap-confirm.js"&gt;&lt;/script&gt;
+
+// init confirm dialog
+$('#confirmBtn').click(function(){
+  $('#confirmAction').confirmModal({
+    heading: 'Confirm Your Action',
+    body: 'Action confirmation details',
+    callback: function(){
+      console.log('you confirm dialog called the callback');
+    }
+  });
+});
+
+// 
+&lt;div id="confirmAction"&gt;&lt;/div&gt;
+</pre>
+
+
+<div id="confirmAction"></div>
+
+
+</div>
+</body>
+</html>
+</html>

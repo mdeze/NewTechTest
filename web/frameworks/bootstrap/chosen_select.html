@@ -1,0 +1,71 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Chosen Select for Bootstrap</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="css/chosen.css" rel="stylesheet" media="screen">
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/chosen.jquery.js"></script>
+
+  <style>
+
+  </style>
+  
+  <script>
+    $(function() {
+      $('#demo2').chosen();
+    });
+  </script>
+
+</head>
+<body>
+<div class="container"> 
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Chosen Select for Bootstrap</p>
+
+<p><a href="https://github.com/whitetruffle/chosen-less-bootstrap">website</a></p>
+<p> <strong>Note:</strong> The version of the plugin on the website doesn't work with jQuery 1.9+ due to <code>$.browser()</code> being deprecated. It fails on detecting IE6 &amp; IE7. Use <code>navigator.userAgent()</code> for a workaround.</p>
+
+<h3>Example - Regular Usage</h3>
+
+<label for="demo1">Normal</label>
+<select id="demo1">
+  <option>Foo</option>
+  <option>Bar</option>
+  <option>FooBar</option>
+  <option>BarFoo</option>
+</select>
+
+<label for="demo2">Chosen</label>
+<select id="demo2">
+  <option>Foo</option>
+  <option>Bar</option>
+  <option>FooBar</option>
+  <option>BarFoo</option>
+</select>
+<br />
+<br />
+<pre>
+// css
+&lt;link href="css/chosen.css" rel="stylesheet" media="screen"&gt;
+
+// script
+&lt;script src="js/chosen.jquery.js"&gt;&lt;/script&gt;
+
+$(function() {
+  $('#demo2').chosen();
+});
+</pre>
+
+</div>
+</body>
+</html>
