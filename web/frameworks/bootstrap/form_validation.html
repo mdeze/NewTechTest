@@ -1,0 +1,112 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Form Validation</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.validate.min.js"></script>
+
+  <style>
+
+  </style>
+  
+  <script>
+
+    var errorStates = [];
+
+    $(function() {
+
+
+
+      $('#LoginForm').validate({
+          errorClass:'error',
+          validClass:'success',
+          errorElement:'span',
+          highlight: function (element, errorClass) {
+              if($.inArray(element, errorStates) == -1){
+                  errorStates[errorStates.length] = element;
+                  $(element).popover('show');
+              }
+          }, 
+          unhighlight: function (element, errorClass, validClass) {
+              if($.inArray(element, errorStates) != -1){
+                  this.errorStates = $.grep(errorStates, function(value) {
+                    return value != errorStates;
+                  });
+                  $(element).popover('hide');
+              }
+          },
+          errorPlacement: function(err, element) {
+              err.hide();
+          }
+      });
+
+      $('#Login_name').popover({
+          placement: 'right',
+          offset: 20,
+          trigger: 'manual'
+      });
+
+      $('#Login_password').popover({
+          placement: 'right',
+          offset: 20,
+          trigger: 'manual'
+      });
+
+
+      $('#form-register').validate({ errorElement: 'span', errorClass:'help-inline', highlight:    function (element, errorClass) {
+        $(element).parent().parent().addClass('error');
+    }, unhighlight: function (element, errorClass) {
+        $(element).parent().parent().removeClass('error');
+    }});
+
+    });
+  </script>
+
+</head>
+<body>
+<div class="container"> 
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Form Validation</p>
+
+
+<form id="LoginForm" method="post">
+
+<label for="Login_name">Name:</label>
+<input id="Login_name" minlength="8" type="text" required required data-content='Minimum 8 characters' data-original-title='Invalid Login Name'/> <br>
+<label for="Login_password">Password:</label>
+<input id="Login_password" minlength="8" type="password" required data-content='Minimum 8 characters' data-original-title='Invalid Password'/> <br>
+
+ 
+
+<button>Submit</button>
+</form>
+
+<h4>Example 2</h4>
+<form id="form-register" method="post">
+
+<label for="Login_name">Name:</label>
+<input id="Login_name" minlength="8" type="text" required /> <br>
+<label for="Login_password">Password:</label>
+<input id="Login_password" minlength="8" type="password" required data-content='Minimum 5 characters' data-original-title='Invalid Password'/> <br>
+
+ 
+
+<button>Submit</button>
+</form>
+
+
+</div>
+</body>
+</html>
