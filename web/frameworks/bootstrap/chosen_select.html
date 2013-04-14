@@ -15,12 +15,16 @@
   <script src="js/chosen.jquery.js"></script>
 
   <style>
-
+    .select-size75
+    {
+        width: 75px;
+    }
   </style>
   
   <script>
     $(function() {
       $('#demo2').chosen();
+      $('#demo4').chosen();
     });
   </script>
 
@@ -35,7 +39,7 @@
 <p><a href="https://github.com/whitetruffle/chosen-less-bootstrap">website</a></p>
 <p> <strong>Note:</strong> The version of the plugin on the website doesn't work with jQuery 1.9+ due to <code>$.browser()</code> being deprecated. It fails on detecting IE6 &amp; IE7. Use <code>navigator.userAgent()</code> for a workaround.</p>
 
-<h3>Example - Regular Usage</h3>
+<h3>Example 1 - Regular Usage</h3>
 
 <label for="demo1">Normal</label>
 <select id="demo1">
@@ -65,6 +69,49 @@ $(function() {
   $('#demo2').chosen();
 });
 </pre>
+
+<h3>Example 2 - Adjust Width</h3>
+
+<label for="demo1">Normal</label>
+<select id="demo3">
+  <option>Foo</option>
+  <option>Bar</option>
+  <option>FooBar</option>
+  <option>BarFoo</option>
+</select>
+
+<label for="demo2">Chosen</label>
+<select id="demo4" class="select-size75">
+  <option>Foo</option>
+  <option>Bar</option>
+  <option>FooBar</option>
+  <option>BarFoo</option>
+</select>
+<br />
+<br />
+<pre>
+// css
+&lt;style type="text/css"&gt;
+/*
+ * select width
+ */
+.select-size75
+{
+    width: 75px;
+}
+&lt;/style&gt;
+
+// markup
+&lt;select id="demo4" class="select-size75"&gt;
+
+// script
+&lt;script src="js/chosen.jquery.js"&gt;&lt;/script&gt;
+
+$(function() {
+  $('#demo4').chosen();
+});
+</pre>
+
 
 </div>
 </body>
