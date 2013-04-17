@@ -1,0 +1,333 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Tabs</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <style>
+
+  </style>
+  
+  <script>
+    $(function() {
+
+      $('#myTab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+      })
+
+      $('#myTabMenu a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+      })
+
+    });
+  </script>
+
+</head>
+<body>
+<div class="container"> 
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Tabs</p>
+
+<br>
+<h4>Example 1 - Basic Tabs</h4>
+<br>
+<p>Each tab has an <code>&lt;a&gt;</code> with a link to a page. On that page, set that tab as "active" using <code>class="active"</code></p>
+
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Messages</a></li>
+</ul>
+
+<br/>
+<pre>
+// markup
+&lt;ul class="nav nav-tabs"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
+
+<br>
+<h4>Example 2 - Dynamic Tabs</h4>
+<br>
+<p>Transition through panes of local content. <code>&lt;a href=""&gt;</code> or <code>data-target</code> points to the element id of the content container. Each "tab" has to be activated via javascript.</p>
+
+<ul class="nav nav-tabs" id="myTab">
+  <li class="active"><a href="#home">Home</a></li>
+  <li><a href="#profile">Profile</a></li>
+  <li><a href="#messages">Messages</a></li>
+  <li><a href="#settings">Settings</a></li>
+</ul>
+ 
+<div class="tab-content">
+  <div class="tab-pane active" id="home"><h4>Home</h4>homey content here</div>
+  <div class="tab-pane" id="profile"><h4>Profile</h4>profiley stuff here</div>
+  <div class="tab-pane" id="messages"><h4>Messages</h4>messages here</div>
+  <div class="tab-pane" id="settings"><h4>Settings</h4>config me!</div>
+</div>
+
+<br/>
+<pre>
+// script
+$(function() {
+  $('#myTab a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+  })
+});
+
+// markup
+&lt;ul class="nav nav-tabs" id="myTab"&gt;
+  &lt;li class="active"&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#profile"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#messages"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#settings"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+ 
+&lt;div class="tab-content"&gt;
+  &lt;div class="tab-pane active" id="home"&gt;&lt;h4&gt;Home&lt;/h4&gt;homey content here&lt;/div&gt;
+  &lt;div class="tab-pane" id="profile"&gt;&lt;h4&gt;Profile&lt;/h4&gt;profiley stuff here&lt;/div&gt;
+  &lt;div class="tab-pane" id="messages"&gt;&lt;h4&gt;Messages&lt;/h4&gt;messages here&lt;/div&gt;
+  &lt;div class="tab-pane" id="settings"&gt;&lt;h4&gt;Settings&lt;/h4&gt;config me!&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+
+<br>
+<h4>Example 3 - Dynamic Tabs with Navbars</h4>
+<br>
+<p></p>
+
+<ul class="nav nav-tabs" id="myTabMenu">
+  <li class="active"><a href="#home2">Home</a></li>
+  <li><a href="#profile2">Profile</a></li>
+  <li><a href="#menu">Menu</a></li>
+  <li><a href="#settings2">Settings</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="home2">
+    <h4>Home</h4>Intro content here
+  </div>
+  <div class="tab-pane " id="profile2">
+    <div class="navbar ">
+      <div class="navbar-inner">
+        <ul class="nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+              <li><a tabindex="-1" href="#">Action</a></li>
+              <li class="disabled"><a tabindex="-1" href="#">Another action</a></li>
+              <li><a tabindex="-1" href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a tabindex="-1" href="#">Separated link</a></li>
+            </ul>
+          </li>
+          <li class="divider-vertical"></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+              <li><a tabindex="-1" href="#">Action</a></li>
+              <li><a tabindex="-1" href="#">Another action</a></li>
+              <li><a tabindex="-1" href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a tabindex="-1" href="#">Separated link</a></li>
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">More options</a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                  <li><a tabindex="-1" href="#">More Option 1</a></li>
+                  <li><a tabindex="-1" href="#">More Option 2</a></li>
+                  <li><a tabindex="-1" href="#">More Option 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane " id="menu">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">Title</a>
+        <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="forms.html">Profile</a></li>
+          <li class="divider-vertical"></li>
+          <li><a href="index.html">Settings</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane" id="settings2">
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <ul class="nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+              <li><a tabindex="-1" href="#">Action</a></li>
+              <li class="disabled"><a tabindex="-1" href="#">Another action</a></li>
+              <li><a tabindex="-1" href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a tabindex="-1" href="#">Separated link</a></li>
+            </ul>
+          </li>
+          <li class="divider-vertical"></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+              <li><a tabindex="-1" href="#">Action</a></li>
+              <li><a tabindex="-1" href="#">Another action</a></li>
+              <li><a tabindex="-1" href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a tabindex="-1" href="#">Separated link</a></li>
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="#">More options</a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                  <li><a tabindex="-1" href="#">More Option 1</a></li>
+                  <li><a tabindex="-1" href="#">More Option 2</a></li>
+                  <li><a tabindex="-1" href="#">More Option 3</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br/>
+<pre>
+// script
+$('#myTabMenu a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+})
+
+// markup
+&lt;ul class="nav nav-tabs" id="myTabMenu"&gt;
+  &lt;li class="active"&gt;&lt;a href="#home2"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#profile2"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#menu"&gt;Menu&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#settings2"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class="tab-content"&gt;
+  &lt;div class="tab-pane active" id="home2"&gt;
+    &lt;h4&gt;Home&lt;/h4&gt;Intro content here
+  &lt;/div&gt;
+  &lt;div class="tab-pane " id="profile2"&gt;
+    &lt;div class="navbar "&gt;
+      &lt;div class="navbar-inner"&gt;
+        &lt;ul class="nav"&gt;
+          &lt;li class="dropdown"&gt;
+            &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;Account&lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
+            &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+              &lt;li class="disabled"&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+              &lt;li class="divider"&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+          &lt;li class="dropdown"&gt;
+            &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;Settings&lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
+            &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+              &lt;li class="divider"&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+              &lt;li class="dropdown-submenu"&gt;
+                &lt;a tabindex="-1" href="#"&gt;More options&lt;/a&gt;
+                &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+                  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;More Option 1&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;More Option 2&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;More Option 3&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="tab-pane " id="menu"&gt;
+    &lt;div class="navbar"&gt;
+      &lt;div class="navbar-inner"&gt;
+        &lt;a class="brand" href="#"&gt;Title&lt;/a&gt;
+        &lt;ul class="nav"&gt;
+          &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="forms.html"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="index.html"&gt;Settings&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="tab-pane" id="settings2"&gt;
+    &lt;div class="navbar navbar-inverse"&gt;
+      &lt;div class="navbar-inner"&gt;
+        &lt;ul class="nav"&gt;
+          &lt;li class="dropdown"&gt;
+            &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;Account&lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
+            &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+              &lt;li class="disabled"&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+              &lt;li class="divider"&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+          &lt;li class="dropdown"&gt;
+            &lt;a href="#" class="dropdown-toggle" data-toggle="dropdown"&gt;Settings&lt;b class="caret"&gt;&lt;/b&gt;&lt;/a&gt;
+            &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Action&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+              &lt;li class="divider"&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;Separated link&lt;/a&gt;&lt;/li&gt;
+              &lt;li class="dropdown-submenu"&gt;
+                &lt;a tabindex="-1" href="#"&gt;More options&lt;/a&gt;
+                &lt;ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"&gt;
+                  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;More Option 1&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;More Option 2&lt;/a&gt;&lt;/li&gt;
+                  &lt;li&gt;&lt;a tabindex="-1" href="#"&gt;More Option 3&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+
+
+</div>
+</body>
+</html>
