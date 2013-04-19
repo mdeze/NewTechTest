@@ -6,70 +6,63 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>SPA - Single Page Application</title>
 
-<style type="text/css">
-	body
-	{
-	background-color: #56789a;
-	font-family:tahoma;
-	color: #FFFFFF;
-	}
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
 
-	h1
-	{
-	text-align: center;
-	}
 
-	pre
-	{
-		width: 80%;
-		margin: auto;
-		font-size: 11px;
-		border: 1px solid black;
-		padding: 5px;
-		border-radius: 4px;        
-		color: #000;
-	}
+  <script src="js/jquery-1.9.1.min.js"></script>
 
-	.demo
-	{
-	width: 85%;
-	margin: auto;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	border: 1px solid black;
-	background-color: #FFF;
-	color: #56789a;
-	font-size: 10pt;
-	padding: 4px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
-	border-radius: 4px;        
-	-webkit-box-shadow: 3px 3px 10px #333333;	
-	-moz-box-shadow: 3px 3px 10px #333333;
-	box-shadow: 3px 3px 10px #333333;		
-	}
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+  
+	<style type="text/css">
+		body
+		{
+			background-color: #56789a;
+			font-family:tahoma;
+		}
 
-	.demo h2
-	{
-	color: #CDCDCD;
-	text-align: center;
-	}
+		.demo
+		{
+			width: 85%;
+			margin: auto;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			border: 1px solid black;
+			background-color: #FFF;
+			padding: 10px;
 
-</style>
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+			border-radius: 4px;        
 
+			-webkit-box-shadow: 3px 3px 10px #333333;	
+			-moz-box-shadow: 3px 3px 10px #333333;
+			box-shadow: 3px 3px 10px #333333;		
+		}
+
+	</style>
+
+  <script>
+    $(function() {
+
+    });
+  </script>
 
 
 </head>
-
 <body>
 
 <div class="demo">	
 
-<h2>SPA - Single Page Application</h2>
+<h2 class="text-center">SPA - Single Page Application</h2>
 
+<blockquote >
 <a href="www.johnpapa.net">John Pappa Instructor</a>
+</blockquote>
 
-<h4>Server Technologies</h4>
+<div class="well">
+<h4 class="text-center">Server Technologies</h4>
 <ul>
 	<li>SQL Server - rdbms</li>
 	<li><a href="http://www.asp.net/entity-framework">Entity Framework</a> - ORM (<a href="http://thedatafarm.com/blog/">JL Blog</a>)</li>
@@ -80,8 +73,10 @@
 	<li><a href="http://www.ninject.org/">Ninject IoC</a> - Inversion of Control pattern</li>
 	<li><a href="http://james.newtonking.com/projects/json-net.aspx">JSON.NET</a> - HTTP data format</li>
 </ul>
+</div>
 
-<h4>Client Technologies</h4>
+<div class="well">
+<h4 class="text-center">Client Technologies</h4>
 <ul>
 	<li><a href="http://jquery.com/">jQuery</a> - DOM/ajax</li>
 	<li><a href="http://knockoutjs.com/">knockout.js</a> - data binding / mvvm</li>
@@ -94,6 +89,7 @@
 	<li><a href="http://experiments.mennovanslooten.nl/2010/mockjson/">jquery.mockjson</a> - mock data access</li>
 	<li><a href="http://www.codenothing.com/archives/2009/activity-plugin/">jquery.activity</a> - user activity tracking</li>
 </ul>
+</div>
 
 <br />
 
