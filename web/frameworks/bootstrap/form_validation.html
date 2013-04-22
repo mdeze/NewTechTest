@@ -25,8 +25,7 @@
 
     $(function() {
 
-
-
+      // init form validation
       $('#LoginForm').validate({
           errorClass:'error',
           validClass:'success',
@@ -50,6 +49,7 @@
           }
       });
 
+      //init error popovers
       $('#Login_name').popover({
           placement: 'right',
           offset: 20,
@@ -63,11 +63,16 @@
       });
 
 
-      $('#form-register').validate({ errorElement: 'span', errorClass:'help-inline', highlight:    function (element, errorClass) {
-        $(element).parent().parent().addClass('error');
-    }, unhighlight: function (element, errorClass) {
-        $(element).parent().parent().removeClass('error');
-    }});
+      $('#form-register').validate({ 
+          errorElement: 'span', 
+          errorClass:'help-inline', 
+          highlight: function (element, errorClass) {
+            $(element).parent().parent().addClass('error');
+          }, 
+          unhighlight: function (element, errorClass) {
+            $(element).parent().parent().removeClass('error');
+          }
+        });
 
     });
   </script>
@@ -80,31 +85,105 @@
  
 <p class="lead text-center">Form Validation</p>
 
+<p><a href="https://github.com/jzaefferer/jquery-validation">Web site</a> and <a href="http://docs.jquery.com/Plugins/Validation">Documentation</a></p>
+
+
+<h4>Example 1 - Basic Form Validation</h4>
+<p>Markup elements <code>required</code> <code>minlength="8"</code> <code>data-content='Minimum 5 characters'</code> <code>data-original-title='Invalid Password'</code> </p>
+
+<form id="form-register" method="post">
+<label for="Login_name">Name:</label>
+<input id="Login_name" name="Login_name" type="text" required minlength="8" /> <br>
+<label for="Login_password">Password:</label>
+<input id="Login_password" name="Login_password" type="password" required minlength="8" data-content='Minimum 5 characters' data-original-title='Invalid Password'/> <br>
+<button class="btn btn-small btn-success">Submit</button>
+</form>
+
+<br/>
+<pre>
+// script
+$('#form-register').validate({ 
+    errorElement: 'span', 
+    errorClass:'help-inline', 
+    highlight: function (element, errorClass) {
+      $(element).parent().parent().addClass('error');
+    }, 
+    unhighlight: function (element, errorClass) {
+      $(element).parent().parent().removeClass('error');
+    }
+  });
+
+// markup
+&lt;input id="Login_name" name="Login_name" minlength="8" type="text" required /&gt; 
+&lt;input id="Login_password" name="Login_password" minlength="8" type="password" required data-content='Minimum 5 characters' data-original-title='Invalid Password'/&gt; 
+
+</pre>
+
+
+
+<h4>Example 2 - Validation with Popup Error</h4>
+
+<p>Uses the same markup elements as above. Error condition call function to display popover. Each popover must be initialized.</p>
 
 <form id="LoginForm" method="post">
-
 <label for="Login_name">Name:</label>
-<input id="Login_name" minlength="8" type="text" required required data-content='Minimum 8 characters' data-original-title='Invalid Login Name'/> <br>
+<input id="Login_name" name="Login_name" type="text" required minlength="8" data-content='Minimum 8 characters' data-original-title='Invalid Login Name'/> <br>
 <label for="Login_password">Password:</label>
-<input id="Login_password" minlength="8" type="password" required data-content='Minimum 8 characters' data-original-title='Invalid Password'/> <br>
-
- 
-
-<button>Submit</button>
+<input id="Login_password" name="Login_password" type="password" required minlength="8" data-content='Minimum 8 characters' data-original-title='Invalid Password'/> <br>
+ <button class="btn btn-small btn-success">Submit</button>
 </form>
 
-<h4>Example 2</h4>
-<form id="form-register" method="post">
+<br/>
+<pre>
+//
+// script
+//
 
-<label for="Login_name">Name:</label>
-<input id="Login_name" minlength="8" type="text" required /> <br>
-<label for="Login_password">Password:</label>
-<input id="Login_password" minlength="8" type="password" required data-content='Minimum 5 characters' data-original-title='Invalid Password'/> <br>
+// global error array
+var errorStates = [];
 
- 
+// init form validation
+$('#LoginForm').validate({
+    errorClass:'error',
+    validClass:'success',
+    errorElement:'span',
+    highlight: function (element, errorClass) {
+        if($.inArray(element, errorStates) == -1){
+            errorStates[errorStates.length] = element;
+            $(element).popover('show');
+        }
+    }, 
+    unhighlight: function (element, errorClass, validClass) {
+        if($.inArray(element, errorStates) != -1){
+            this.errorStates = $.grep(errorStates, function(value) {
+              return value != errorStates;
+            });
+            $(element).popover('hide');
+        }
+    },
+    errorPlacement: function(err, element) {
+        err.hide();
+    }
+});
 
-<button>Submit</button>
-</form>
+//init error popovers
+$('#Login_name').popover({
+    placement: 'right',
+    offset: 20,
+    trigger: 'manual'
+});
+
+$('#Login_password').popover({
+    placement: 'right',
+    offset: 20,
+    trigger: 'manual'
+});
+
+// markup
+&lt;input id="Login_name" name="Login_name" type="text" required minlength="8" data-content='Minimum 8 characters' data-original-title='Invalid Login Name'/&gt; 
+&lt;input id="Login_password" name="Login_password" type="password" required minlength="8" data-content='Minimum 8 characters' data-original-title='Invalid Password'/&gt; 
+
+</pre>
 
 
 </div>
