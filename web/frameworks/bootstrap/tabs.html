@@ -15,7 +15,17 @@
   <script src="js/bootstrap.min.js"></script>
 
   <style>
+    /* center menu tabs */
+    #centerTabs > li {
+        float:none;
+        display:inline-block;
+        *display:inline; /* ie7 fix */
+         zoom:1; /* hasLayout ie7 trigger */
+    }
 
+    #centerTabs {
+        text-align:center;
+    }
   </style>
   
   <script>
@@ -63,9 +73,44 @@
 &lt;/ul&gt;
 </pre>
 
+<br>
+<h4>Example 2 - Center Tabs</h4>
+<br>
+<p>Override the float left of the <code>&lt;li&gt;</code> elements with some css</p>
+
+<ul id="centerTabs" class="nav nav-tabs">
+  <li class="active"><a href="#">Home</a></li>
+  <li><a href="#">Profile</a></li>
+  <li><a href="#">Messages</a></li>
+</ul>
+
+<br/>
+<pre>
+// css
+
+/* center menu tabs */
+#centerTabs > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+     zoom:1; /* hasLayout ie7 trigger */
+}
+
+#centerTabs {
+    text-align:center;
+}
+
+// markup
+&lt;ul class="nav nav-tabs"&gt;
+  &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Profile&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#"&gt;Messages&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+
 
 <br>
-<h4>Example 2 - Dynamic Tabs</h4>
+<h4>Example 3 - Dynamic Tabs</h4>
 <br>
 <p>Transition through panes of local content. <code>&lt;a href=""&gt;</code> or <code>data-target</code> points to the element id of the content container. Each "tab" has to be activated via javascript.</p>
 
@@ -111,7 +156,7 @@ $(function() {
 
 
 <br>
-<h4>Example 3 - Dynamic Tabs with Navbars</h4>
+<h4>Example 4 - Dynamic Tabs with Navbars</h4>
 <br>
 <p></p>
 
