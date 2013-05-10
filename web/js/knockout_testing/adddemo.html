@@ -1,0 +1,361 @@
+<html>
+<head>
+<meta charset="utf-8">
+<script src="inc/js/jquery.js"></script>
+<script src="inc/js/knockout-2.2.0.js"></script>
+
+
+<script type="text/javascript">
+
+	$(document).ready(function () {
+		demo1Init();
+	});
+
+	//
+	// demo 1
+	//
+
+	var testViewModel =  {
+
+        newPrograms : ko.observableArray([]),
+        newProgramEdit: ko.observable(),
+
+        loadProgramList: function(){
+        	var json = programData.Programs;
+
+            $.each(json, function (i, p) 
+            {
+                testViewModel.newPrograms.push(new Program()
+                	.Type(p.Type)
+			        .Name(p.Name)
+			        .Vendor(p.Vendor)
+					.OfficeBill(p.OfficeBill)
+					.OfficeCapBill(p.OfficeCapBill)
+					.HomeBill(p.HomeBill)
+					.HomeCapBill(p.HomeCapBill)     
+					.OfficeAbate(p.OfficeAbate)
+					.OfficeCapAbate(p.OfficeCapAbate)
+					.HomeAbate(p.HomeAbate)
+					.HomeCapAbate(p.HomeCapAbate)     					
+			        );
+                console.log(p.Name);
+            });
+
+        },
+        addNewProgram: function(program){
+        	if (testViewModel.newProgramEdit() == null)
+        	{
+	    		testViewModel.newPrograms.remove(program);
+	    		testViewModel.newProgramEdit(program);
+    		}
+    		else
+    		{
+    			var currentProgram = testViewModel.newProgramEdit();
+	    		testViewModel.newPrograms.remove(program);
+	    		testViewModel.newProgramEdit(program);
+	    		testViewModel.newPrograms.push(currentProgram);
+    		}
+        },
+        hideProgram: function(elem) { 
+        	if (elem.nodeType === 1) {
+        		$(elem).fadeOut();
+        	}
+        }
+
+	 };
+
+    Program = function () {
+        this.Type = ko.observable();
+        this.Name = ko.observable();
+        this.Vendor = ko.observable();
+		this.OfficeBill = ko.observable();
+		this.OfficeCapBill = ko.observable();
+		this.HomeBill = ko.observable();
+		this.HomeCapBill = ko.observable(); 
+		this.OfficeAbate = ko.observable();
+		this.OfficeCapAbate = ko.observable();
+		this.HomeAbate = ko.observable();
+		this.HomeCapAbate = ko.observable(); 		
+    };
+
+	function demo1Init()
+	{
+		
+		testViewModel.loadProgramList();		
+		ko.applyBindings(testViewModel);
+	}
+	
+
+	var programData = { Programs: [
+		{"Type":"Point of Care", "Name":"Direct Start Amitiza", "Vendor":"Dr. First", "OfficeBill":"3.50", "OfficeCapBill":"3.50", "HomeBill":"2.50", "HomeCapBill":"3.25", "OfficeAbate":"1.50", "OfficeCapAbate":"1.50", "HomeAbate":"0.50", "HomeCapAbate":"0.50"},
+		{"Type":"Point of Care", "Name":"Direct Start Amitiza", "Vendor":"New Crop", "OfficeBill":"3.50", "OfficeCapBill":"3.50", "HomeBill":"2.75", "HomeCapBill":"3.50", "OfficeAbate":"1.50", "OfficeCapAbate":"1.50", "HomeAbate":"0.50", "HomeCapAbate":"0.50"},
+		{"Type":"Point of Care", "Name":"Direct Start Lyrica", "Vendor":"Dr. First", "OfficeBill":"3.50", "OfficeCapBill":"3.50", "HomeBill":"2.50", "HomeCapBill":"3.25", "OfficeAbate":"1.50", "OfficeCapAbate":"1.50", "HomeAbate":"0.50", "HomeCapAbate":"0.50"},
+		{"Type":"Point of Care", "Name":"Direct Start Zetia", "Vendor":"Dr. First", "OfficeBill":"3.50", "OfficeCapBill":"3.50", "HomeBill":"2.50", "HomeCapBill":"3.25", "OfficeAbate":"1.50", "OfficeCapAbate":"1.50", "HomeAbate":"0.50", "HomeCapAbate":"0.50"},
+		{"Type":"Point of Care", "Name":"Direct Start Zetia", "Vendor":"New Crop", "OfficeBill":"3.50", "OfficeCapBill":"3.50", "HomeBill":"2.75", "HomeCapBill":"3.50", "OfficeAbate":"1.50", "OfficeCapAbate":"1.50", "HomeAbate":"0.50", "HomeCapAbate":"0.50"}
+		]};
+
+
+
+
+</script>	
+
+
+<style type="text/css">
+
+    body
+    {
+        background-color: #56789a;
+        font-family:tahoma;
+        color: #FFFFFF;
+    }
+
+	.demo
+	{
+        width: 85%;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+		border: 1px solid black;
+		background-color: #FFF;
+		color: #000;
+		padding: 4px;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;        
+        -webkit-box-shadow: 3px 3px 10px #333333;	
+        -moz-box-shadow: 3px 3px 10px #333333;
+        box-shadow: 3px 3px 10px #333333;		
+
+	}
+
+    .demo h2
+    {
+    	font-size: 32px;
+        color: #CDCDCD;
+        text-align: center;
+        text-shadow: 2px 2px 4px #666666;
+    }	
+
+    .demoSection
+    {
+    	width:80%;
+    	margin: auto;
+    	margin-bottom: 10px;
+    	border: 1px solid #CCCCCC;
+		padding: 4px;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;            	
+    }
+    .demoSection h2
+    {
+    	margin-top: 5px;
+    	color: #56789a;
+    	font-size: 20px;
+    	text-shadow: 2px 2px 4px #FFF;
+    }
+
+#newProgramList 
+{
+	width: 350px;
+	height: 200px;
+	overflow-y: scroll;
+	border: thin solid #56789a;
+	border-radius: 8px;	
+	padding: 5px;
+}
+
+
+#newProgramList li
+{
+	list-style: none;
+}
+
+.newProgram
+{
+	margin: 10px;
+	float: left;
+	width: 310px;
+
+}
+
+
+.newProgramTitle
+{
+	background-color: #f5f5f5;
+	border: thin solid #CCCCCC;
+	border-radius: 4px;	
+	text-align: center;
+	font-weight: bold;
+	padding: 2px;
+	width: 95%;
+	margin: 5px;
+}
+
+.newProgramLabel
+{
+
+}
+.newProgramText
+{
+	color: rgb(78, 120, 162);
+}
+
+.newProgramDescription
+{
+	background-color: rgb(220, 237, 247);
+	border: thin solid #56789a;
+	border-radius: 4px;
+	box-shadow: 4px 4px 2px #655e5e;
+
+}
+
+.newProgramType
+{
+	padding: 2px;
+	width: 95%;
+	margin: 5px;
+}
+.newProgramName
+{
+	padding: 2px;
+	width: 95%;
+	margin: 5px;
+}
+.newProgramVendor
+{
+	padding: 2px;
+	width: 95%;
+	margin: 5px;	
+}
+
+.addNewProgram
+{
+
+
+}
+
+.addNewBtn
+{
+	background-color:  rgb(78, 120, 162);
+	color: #FFFFFF;
+	font-weight: bold;
+	border-radius: 4px;
+}
+
+.newProgramRates th, td
+{
+	color: #000000;
+}
+
+</style>
+
+
+</head>
+<body>
+
+<div id="demo1" class="demo">
+<h2>Add Program Demo</h2>
+
+<ul id="newProgramList" data-bind="template: { foreach: newPrograms, beforeRemove: $root.hideProgram }">
+	<li class="newProgram">
+		<div>
+			<div class="newProgramHeader"></div>
+			<div class="newProgramDescription">
+				<div class="newProgramTitle">
+					<span >New Program</span>
+					<span ><button class="addNewBtn" data-bind="click: $root.addNewProgram">+</button></span>
+				</div>			
+				<div class="newProgramType">
+					<span class="newProgramLabel">Type:</span>
+					<span class="newProgramText" data-bind="text: Type"></span>
+				</div>
+				<div class="newProgramName">
+					<span class="newProgramLabel">Program:</span>
+					<span class="newProgramText" data-bind="text: Name"></span>
+				</div>
+				<div class="newProgramVendor">
+					<span class="newProgramLabel">Vendor:</span>
+					<span class="newProgramText" data-bind="text: Vendor"></span>
+				</div>
+			</div>
+		</div>
+	</li>
+</ul>
+
+<br>
+
+
+
+<div id="editNewProgram" data-bind="if: newProgramEdit">
+	<div data-bind="with: newProgramEdit">
+		<div class="newProgramHeader"></div>
+		<div class="newProgramDescription">
+			<div class="newProgramTitle">
+				<span >Adding New Program</span>
+			</div>			
+			<div>
+				<span class="newProgramLabel">Type:</span>
+				<span class="newProgramText" data-bind="text: Type"></span>
+				<span class="newProgramLabel">Program:</span>
+				<span class="newProgramText" data-bind="text: Name"></span>
+				<span class="newProgramLabel">Vendor:</span>
+				<span class="newProgramText" data-bind="text: Vendor"></span>
+			</div>
+
+			<div class="newProgramRates">
+				<table>
+					<thead>
+						<tr>
+							<th>Calc Type</th>
+							<th>OFFICE</th>
+							<th>OFFICECAP</th>
+							<th>HOME</th>
+							<th>HOMECAP</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Bill</td>
+							<td><input id="officeBill" name="officeBill" data-bind="value: OfficeBill" type="text" size="10" value="0.00"/></td>
+							<td><input id="officeCapBill" name="officeCapBill" data-bind="value: OfficeCapBill" type="text" size="10" value="0.00"/></td>
+							<td><input id="homeBill" name="homeBill" data-bind="value: HomeBill" type="text" size="10" value="0.00"/></td>
+							<td><input id="homeCapBill" name="homeCapBill" data-bind="value: HomeCapBill" type="text" size="10" value="0.00"/></td>
+						</tr>
+						<tr>
+							<td>Abatement</td>
+							<td><input id="officeAbate" name="officeAbate" data-bind="value: OfficeAbate" type="text" size="10" value="0.00"/></td>
+							<td><input id="officeCapAbate" name="officeCapAbate" data-bind="value: OfficeCapAbate" type="text" size="10" value="0.00"/></td>
+							<td><input id="homeAbate" name="homeAbate" data-bind="value: HomeAbate" type="text" size="10" value="0.00"/></td>
+							<td><input id="homeCapAbate" name="homeCapAbate" data-bind="value: HomeCapAbate" type="text" size="10" value="0.00"/></td>
+						</tr>					
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+</li>
+
+
+
+
+</div>
+
+
+
+<!-- demo debug -->
+<div class="demo">
+<h2>ViewModel Data Debug</h2>
+
+<hr noshade />
+
+<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+
+<hr noshade />
+<br />
+
+</div>
+
+</body>
+</html>
