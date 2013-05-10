@@ -112,6 +112,18 @@ $(function() {
 });
 </pre>
 
+<br />
+
+<h3>Example 3 - Updating SELECT after Chosen is initialized</h3>
+
+<p>If you have to change attributes or options for the SELECT after Chosen is initialized, you have to notify chosen. The example below demonstrates enabling a previously disabled SELECT</p>
+<br />
+<pre>
+
+// script
+$('#demo4').attr('disabled', false).trigger("liszt:updated");
+
+</pre>
 
 </div>
 </body>

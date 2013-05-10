@@ -7,18 +7,27 @@
 
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-
+  <link href="css/chosen.css" rel="stylesheet" media="screen">
 
   <script src="js/jquery-1.9.1.min.js"></script>
 
     <!-- Bootstrap -->
   <script src="js/bootstrap.min.js"></script>
   <script src="js/jquery.validate.min.js"></script>
+  <script src="js/chosen.jquery.js"></script>
 
   <style>
 
+    .validationError
+    {
+      display: block;
+      font-style: italic;
+      font-weight: bold;
+      color: red;
+    }
+
   </style>
-  
+
   <script>
 
     var errorStates = [];
@@ -73,6 +82,49 @@
             $(element).parent().parent().removeClass('error');
           }
         });
+
+      // using a rules object
+      $("#jed").validate({
+          rules: {
+              UserName: {
+                  required: true,
+                  minlength: 4
+              },
+              UserTeam: {
+                  required: true
+              }
+          },
+          messages: {
+            UserName: "Enter your name!",
+            UserTeam: "Please select a team!"
+          },
+          submitHandler: function(form) {
+              alert('submitted');
+          }
+      });
+
+      // init chosen select 
+      $('#chosenTeam').chosen();
+
+      // load validation with custom submit handler
+      $("#chosenForm").validate({
+        rules: {
+              usrTeamChosen: {
+                  required: true
+              }
+          },
+          messages: {
+            usrTeamChosen: "Please select a team!"
+          },
+        submitHandler: function(form) {
+              if (! $('.chzn-done').valid()){
+                console.log('validation failed in submithandler');
+                return false;        
+              }
+              form.submit();
+          }
+      });
+          
 
     });
   </script>
@@ -184,7 +236,139 @@ $('#Login_password').popover({
 &lt;input id="Login_password" name="Login_password" type="password" required minlength="8" data-content='Minimum 8 characters' data-original-title='Invalid Password'/&gt; 
 
 </pre>
+<br />
 
+<h4>Example 3 - No HTML Markup, passing in a Rules object</h4>
+
+<form id="jed" name="dje">
+
+<input id="usrName" name="UserName" type="text" /> 
+<br>
+<select id="usrTeam" name="UserTeam">
+<option value="">--select team--</option>
+<option value="Bs">Bruins</option>
+<option value="Cs">Celtics</option>
+<option value="Sox">RedSox</option>
+</select>
+<br />
+ <button class="btn btn-small btn-success">Submit</button>
+</form>
+<br/>
+<pre>
+//
+// script
+//
+// using a rules object
+$("#jed").validate({
+    rules: {
+        UserName: {
+            required: true,
+            minlength: 4
+        },
+        UserTeam: {
+            required: true
+        }
+    },
+    messages: {
+      UserName: "Enter your name!",
+      UserTeam: "Please select a team!"
+    },
+    submitHandler: function(form) {
+        alert('submitted');
+    }
+});
+
+
+// markup
+&lt;form id="jed" name="dje"&gt;
+&lt;input id="usrName" name="UserName" type="text" /&gt; 
+&lt;br&gt;
+&lt;select id="usrTeam" name="UserTeam"&gt;
+&lt;option value=""&gt;--select team--&lt;/option&gt;
+&lt;option value="Bs"&gt;Bruins&lt;/option&gt;
+&lt;option value="Cs"&gt;Celtics&lt;/option&gt;
+&lt;option value="Sox"&gt;RedSox&lt;/option&gt;
+&lt;/select&gt;
+&lt;br /&gt;
+ &lt;button class="btn btn-small btn-success"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+</pre>
+<br>
+
+<h4>Example 4 - Supporting Chosen Select</h4>
+
+<br />
+<form id="chosenForm" name="dje" >
+  <label for="chosenTeam">Team:</label>
+  <select id="chosenTeam" name="usrTeamChosen" >
+    <option value="">--select team--</option>
+    <option value="Bs">Bruins</option>
+    <option value="Cs">Celtics</option>
+    <option value="Sox">RedSox</option>
+  </select>
+  <br />
+  <button class="btn btn-small btn-success">Submit</button>
+</form>
+<br/>
+<pre>
+//
+// style
+//
+.validationError
+{
+  display: block;
+  font-style: italic;
+  font-weight: bold;
+  color: red;
+}
+
+//
+// script
+//
+
+// init chosen select 
+$('#chosenTeam').chosen();
+
+// load validation with custom submit handler
+$("#chosenForm").validate({
+    errorClass:'validationError', 
+    highlight: function (element, errorClass) {
+        $(element).addClass('error');
+      }, 
+    unhighlight: function (element, errorClass) {
+        $(element).removeClass('error');
+      }, 
+    rules: {
+        usrTeamChosen: {
+            required: true
+        }
+    },
+    messages: {
+      usrTeamChosen: "Please select a team!"
+    },
+  submitHandler: function(form) {
+        if (! $('.chzn-done').valid()){
+          console.log('validation failed in submithandler');
+          return false;        
+        }
+        form.submit();
+    }
+});
+
+// markup
+&lt;form id="chosenForm" name="dje" class="form-inline"&gt;
+&lt;label for="chosenTeam"&gt;Team:&lt;/label&gt;
+&lt;select id="chosenTeam" name="usrTeamChosen" &gt;
+&lt;option value=""&gt;--select team--&lt;/option&gt;
+&lt;option value="Bs"&gt;Bruins&lt;/option&gt;
+&lt;option value="Cs"&gt;Celtics&lt;/option&gt;
+&lt;option value="Sox"&gt;RedSox&lt;/option&gt;
+&lt;/select&gt;
+ &lt;button class="btn btn-small btn-success"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+<br>
 
 </div>
 </body>
