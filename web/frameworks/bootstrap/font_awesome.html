@@ -1,0 +1,151 @@
+<!doctype html>
+ 
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Bootstrap Demo - Font Awesome</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="css/font-awesome.min.css" rel="stylesheet" media="screen">
+
+
+  <script src="js/jquery-1.9.1.min.js"></script>
+
+    <!-- Bootstrap -->
+  <script src="js/bootstrap.min.js"></script>
+
+  <style>
+  #myBeer
+  {
+    color: yellow;
+    text-shadow: 2px 2px 2px #666;
+  }
+
+  .action-success
+  {
+    color: green;
+    text-shadow: 2px 2px 2px #ccc;
+  }
+
+
+  .icons-ul
+  {
+    list-style: none;
+  }
+
+  </style>
+  
+  <script>
+    $(function() {
+
+    });
+  </script>
+
+</head>
+<body>
+<div class="container"> 
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<p class="lead text-center">Font Awesome</p>
+
+<p>Integrating <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> with Bootstrap</p>
+
+<ol>
+  <li>Copy the <code>font-awesome</code> directory into your project.</li>
+  <li>In the <code>&lt;head&gt;</code> of your html, reference the location to your font-awesome.min.css.</li>
+</ol>
+
+<pre>
+&lt;link rel="stylesheet" href="path/to/bootstrap/css/bootstrap.min.css"&gt;
+&lt;link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"&gt;
+</pre>
+<br />
+
+<h4>Example 1 - Basic Usage</h4>
+
+<p><i class="icon-cogs"></i> icon-cogs</p>
+
+<pre>
+&lt;i class="icon-cogs"&gt;&lt;/i&gt; icon-cogs
+</pre>
+<br />
+
+<h4>Example 2 - Sizes</h4>
+
+<p><i class="icon-cogs icon-large"></i> icon-cogs icon-large</p>
+<p><i class="icon-cogs icon-2x"></i> icon-cogs icon-2x</p>
+<p><i class="icon-cogs icon-3x"></i> icon-cogs icon-3x</p>
+
+<pre>
+&lt;p&gt;&lt;i class="icon-cogs icon-large"&gt;&lt;/i&gt; icon-cogs icon-large&lt;/p&gt;
+&lt;p&gt;&lt;i class="icon-cogs icon-2x"&gt;&lt;/i&gt; icon-cogs icon-2x&lt;/p&gt;
+&lt;p&gt;&lt;i class="icon-cogs icon-3x"&gt;&lt;/i&gt; icon-cogs icon-3x&lt;/p&gt;
+</pre>
+<br />
+
+<h4>Example 3 - Coloring</h4>
+
+<p><i class="icon-ok icon-3x action-success"></i> built-in bootstrap class</p>
+<p><span class="badge badge-info"><i class="icon-asterisk icon-white"></i></span> combine with built-in bootstrap features</p>
+<p><i id="myBeer" class="icon-beer icon-3x"></i> using css</p>
+
+<pre>
+// css
+&lt;style&gt;
+  #myBeer
+  {
+    color: yellow;
+    text-shadow: 2px 2px 2px #666;
+  }
+&lt;/style&gt;
+
+// markup
+&lt;p&gt;&lt;i class="icon-ok icon-3x action-success"&gt;&lt;/i&gt; built-in bootstrap class&lt;/p&gt;
+&lt;p&gt;&lt;span class="badge badge-info"&gt;&lt;i class="icon-asterisk icon-white"&gt;&lt;/i&gt;&lt;/span&gt; combine with built-in bootstrap features&lt;/p&gt;
+&lt;p&gt;&lt;i id="myBeer" class="icon-beer icon-3x"&gt;&lt;/i&gt; using css&lt;/p&gt;
+</pre>
+<br />
+
+<h4>Example 4 - Replace default list icons</h4>
+
+<ul class="icons-ul">
+  <li><i class="icon-li icon-ok"></i>Bulleted lists (like this one)</li>
+  <li><i class="icon-li icon-ok"></i>Buttons</li>
+  <li><i class="icon-li icon-ok"></i>Button groups</li>
+  <li><i class="icon-li icon-ok"></i>Navigation</li>
+  <li><i class="icon-li icon-ok"></i>Prepended form inputs</li>
+  <li><i class="icon-li icon-ok"></i>&hellip;and many more with custom CSS</li>
+</ul>
+
+<pre>
+&lt;ul class="icons-ul"&gt;
+  &lt;li&gt;&lt;i class="icon-li icon-ok"&gt;&lt;/i&gt;Bulleted lists (like this one)&lt;/li&gt;
+  &lt;li&gt;&lt;i class="icon-li icon-ok"&gt;&lt;/i&gt;Buttons&lt;/li&gt;
+  &lt;li&gt;&lt;i class="icon-li icon-ok"&gt;&lt;/i&gt;Button groups&lt;/li&gt;
+  &lt;li&gt;&lt;i class="icon-li icon-ok"&gt;&lt;/i&gt;Navigation&lt;/li&gt;
+  &lt;li&gt;&lt;i class="icon-li icon-ok"&gt;&lt;/i&gt;Prepended form inputs&lt;/li&gt;
+  &lt;li&gt;&lt;i class="icon-li icon-ok"&gt;&lt;/i&gt;&hellip;and many more with custom CSS&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+<br />
+
+<h4>Example 5 - Animated Spinner</h4>
+
+<h5><i class="icon-spinner icon-spin icon-large"></i> Loading content..</h5>
+
+<pre>
+&lt;h5&gt;&lt;i class="icon-spinner icon-spin icon-large"&gt;&lt;/i&gt; Loading content..&lt;/h5&gt;  
+</pre>
+<br />
+
+<div class="alert alert-info">
+  <p><i class="icon-info-sign icon-white"></i> <strong>Examples</strong>
+   More Font-Awesome examples found at <a href="http://fortawesome.github.io/Font-Awesome/examples/">FA website</a></p>
+</div>
+
+
+</div>
+</body>
+</html>
