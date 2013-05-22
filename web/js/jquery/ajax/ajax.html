@@ -1,0 +1,246 @@
+<html>
+<head>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    
+    <script src="js/jquery.js"></script>
+    <script src="js/knockout-2.2.0.js"></script>
+
+	<script type="text/javascript">
+	    $(document).ready(function() { 
+			
+            // wire up get data button
+            $("#getBtn").click(function(){
+                $.getJSON("ajaxtest.php?m=get", function(getData){
+                    $("#getResults").text(getData);
+                }); 
+            });
+
+            // wire up knockout get data button
+            $("#koBtn").click(function(){
+                $.getJSON("ajaxtest.php?m=ko", function(koData){
+                    ViewModel.loadData(koData);
+                }); 
+            });
+            
+
+            // wire up post data button
+            $("#postBtn").click(function(){
+                var dataVal = $('#postData').val();
+                var svcURL = "http://devwebapps2.adheris.com/";
+
+                jQuery.ajax({
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    url: "ajaxtest.php?m=post",
+                    data: JSON.stringify({'data' : dataVal}),
+                    success : function(data){
+                        alert(data);
+                    }
+                });
+                
+            });
+
+            ko.applyBindings(ViewModel);
+        });     
+
+
+    var ViewModel = {
+        name: ko.observable(""),
+        age: ko.observable(""),
+        color: ko.observable(""),
+        loadData : function(person) {
+            this.name(person.name);
+            this.age(person.age);
+            this.color(person.color);
+        }
+
+    };
+
+
+	</script>
+
+
+
+</head>
+<body>
+<div class="container"> 
+
+<h2 class="text-center">Bootstrap Framework Demo</h2> 
+ 
+<h4 class="lead text-center">JQuery Ajax Demo</h4>
+
+
+<h4>jQuery Ajax</h4>
+<p>
+    <ul>
+        <li>GET Requests</li>
+        <li>POST Requests</li>
+        <li>knockout.js Integration</li>
+    </ul>
+</p>
+<p><strong>Website:</strong> <a href="http://api.jquery.com/jQuery.ajax/">jQuery Ajax</a></p>
+
+
+<h3>Example 1 - GET using ajax helper <code>$.getJSON()</code></h3>
+
+<p>
+<button id="getBtn" class="btn btn-primary">Get It!</button> 
+</p>
+
+<h4>GET results</h4>
+<pre id="getResults">You need to GET IT to see the results</pre>
+
+<pre>
+//
+// PHP
+//
+&lt;?php
+    $ajax_get_return_string = "This data was GOT via GET";
+
+    print json_encode($ajax_get_return_string);
+?&gt;
+
+//
+// javascript
+//
+&lt;script src="js/jquery.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+    // wire up get data button
+    $("#getBtn").click(function(){
+        $.getJSON("ajaxtest.php?m=get", function(getData){
+            $("#getResults").text(getData);
+        }); 
+    });
+&lt;/script&gt;
+</pre>
+<br>
+
+
+<h3>Example 2 - POST using raw ajax method <code>$.ajax()</code></h3>
+
+<p>
+<input id="postData" type="text" /><br />
+<button id="postBtn" class="btn btn-primary">Post It!</button> 
+</p>
+
+<pre>
+//
+// PHP
+//
+&lt;?php
+
+$data = json_decode(file_get_contents("php://input"));
+
+// $data is an object
+print $data->data;
+
+?&gt;
+
+//
+// javascript
+//
+&lt;script src="js/jquery.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+
+    // wire up post data button
+    $("#postBtn").click(function(){
+        var dataVal = $('#postData').val();
+        var svcURL = "http://devwebapps2.adheris.com/";
+
+        jQuery.ajax({
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            url: "ajaxtest.php?m=post",
+            data: JSON.stringify({'data' : dataVal}),
+            success : function(data){
+                alert(data);
+            }
+        });
+    });
+&lt;/script&gt;
+</pre>
+<br>
+
+
+<h3>Example 3 - GET using knockout.js for view data binding</h3>
+
+<div>
+
+<label for="koName">Name:</label>
+<input id="koName" type="text" data-bind="value: name" readonly placeholder="To Be Named Later"/><br />
+<label for="koAge">Age:</label>
+<input id="koAge" type="text" data-bind="value: age" readonly placeholder="0"/><br />
+<label for="koColor">Color:</label>
+<input id="koColor" type="text" data-bind="value: color" readonly placeholder="clear"/><br />
+
+<button id="koBtn" class="btn btn-primary">Knock It Out!</button> 
+
+</div>
+<br />
+
+<pre>
+//
+// PHP
+//
+&lt;?php
+
+$data = array(
+    "name" => "Mike",
+    "age" => 45,
+    "color" => "green"
+    );
+
+print json_encode($data);
+
+?&gt;
+
+//
+// javascript
+//
+&lt;script src="js/jquery.js"&gt;&lt;/script&gt;
+&lt;script src="js/knockout-2.2.0.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+
+// wire up knockout get data button
+$("#koBtn").click(function(){
+    $.getJSON("ajaxtest.php?m=ko", function(koData){
+        ViewModel.loadData(koData);
+    }); 
+});
+
+ko.applyBindings(ViewModel);
+
+var ViewModel = {
+    name: ko.observable(""),
+    age: ko.observable(""),
+    color: ko.observable(""),
+    loadData : function(person) {
+        this.name(person.name);
+        this.age(person.age);
+        this.color(person.color);
+    }
+
+&lt;/script&gt;
+
+//
+// markup
+//
+&lt;label for="koName"&gt;Name:&lt;/label&gt;
+&lt;input id="koName" type="text" data-bind="value: name" readonly placeholder="To Be Named Later"/&gt;&lt;br /&gt;
+&lt;label for="koAge"&gt;Age:&lt;/label&gt;
+&lt;input id="koAge" type="text" data-bind="value: age" readonly placeholder="0"/&gt;&lt;br /&gt;
+&lt;label for="koColor"&gt;Color:&lt;/label&gt;
+&lt;input id="koColor" type="text" data-bind="value: color" readonly placeholder="clear"/&gt;&lt;br /&gt;
+
+</pre>
+
+
+</div>
+
+</body>
+</html>
