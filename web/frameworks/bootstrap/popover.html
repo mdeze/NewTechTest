@@ -15,6 +15,13 @@
   <script src="js/bootstrap.min.js"></script>
 
   <style>
+    #popContent{
+      display: none;
+    }
+
+    .popover {
+      max-width: 600px;
+    }
 
   </style>
   
@@ -41,8 +48,21 @@
       });
     });
       
+    $("#popEx4").popover({
+      title:'HTML Content FTW!',
+      content: popForm(),
+      placement:'right',
+      html: true
+    });
+
 
     });
+
+    function popForm()
+    {
+      var html = $("#popContent").html();
+      return html;
+    }
   </script>
 
 </head>
@@ -162,6 +182,75 @@ $(".popSpan").each(function(){
   &lt;/tr&gt;  
 &lt;/tbody&gt;
 &lt;/table&gt;
+</pre>
+
+<br>
+<h4>Example 4 - Popover with HTML Content</h4>
+<br>
+<p><button id="popEx4" class="btn">Pop, pop-pop-pop</button></p>
+<br/>
+
+<div id="popContent">
+<table class="table table-striped">
+  <tr>
+    <td>Name:</td>
+    <td><input type="text" size="10" /></td>
+  </tr>
+  <tr>
+    <td>Age:</td>
+    <td><input type="text" size="4" /></td>
+  </tr>  
+</table>
+</div>
+
+
+<pre>
+//
+// css
+//
+&lt;style&gt;
+  #popContent{
+    display: none;
+  }
+
+  .popover {
+    max-width: 600px;
+  }
+&lt;/style&gt;
+
+//
+// init on doc load
+//
+$("#popEx4").popover({
+  title:'HTML Content FTW!',
+  content: popForm(),
+  placement:'right',
+  html: true
+});
+
+function popForm()
+{
+  var html = $("#popContent").html();
+  return html;
+}
+
+//
+// markup
+//
+&lt;p&gt;&lt;button id="popEx4" class="btn"&gt;Pop, pop-pop-pop&lt;/button&gt;&lt;/p&gt;
+
+&lt;div id="popContent"&gt;
+&lt;table class="table table-striped"&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Name:&lt;/td&gt;
+    &lt;td&gt;&lt;input type="text" size="10" /&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Age:&lt;/td&gt;
+    &lt;td&gt;&lt;input type="text" size="4" /&gt;&lt;/td&gt;
+  &lt;/tr&gt;  
+&lt;/table&gt;
+&lt;/div&gt;
 </pre>
 
 
