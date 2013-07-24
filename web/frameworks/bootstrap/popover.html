@@ -40,21 +40,22 @@
 
       });
 
-    $(".popSpan").each(function(){
-      $(this).popover({
-        placement:'right',
-        title:'popover in a table',
-        content:'table poping'
+      $(".popSpan").each(function(){
+        $(this).popover({
+          placement:'right',
+          title:'popover in a table',
+          content:'table poping'
+        });
       });
-    });
-
-      
-    $("#popEx4").popover({
-      title:'HTML Content FTW!',
-      content: popForm(),
-      placement:'right',
-      html: true
-    });
+        
+      $("#popEx4").popover({
+        title:'HTML Content FTW!',
+        content: popForm(),
+        placement:'right',
+        html: true
+      }).parent().delegate('button#saveContent', 'click', function() {
+          console.log('~content saved~');
+      });
 
     });
 
@@ -203,7 +204,7 @@ $(".popSpan").each(function(){
     <td><input type="text" size="4" /></td>
   </tr>  
 </table>
-<button class="saveContent">Save</button>
+<button id="saveContent">Save</button>
 </div>
 
 
@@ -229,6 +230,8 @@ $("#popEx4").popover({
   content: popForm(),
   placement:'right',
   html: true
+}).parent().delegate('button#saveContent', 'click', function() {
+    console.log('~content saved~');
 });
 
 function popForm()
@@ -253,6 +256,7 @@ function popForm()
     &lt;td&gt;&lt;input type="text" size="4" /&gt;&lt;/td&gt;
   &lt;/tr&gt;  
 &lt;/table&gt;
+&lt;button id="saveContent"&gt;Save&lt;/button&gt;
 &lt;/div&gt;
 </pre>
 
