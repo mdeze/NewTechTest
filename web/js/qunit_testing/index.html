@@ -8,9 +8,11 @@
 
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="css/qunit-1.12.0.css" rel="stylesheet" media="screen">
 
 
   <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/qunit-1.12.0.js"></script>
 
     <!-- Bootstrap -->
   <script src="js/bootstrap.min.js"></script>
@@ -41,6 +43,11 @@
 			box-shadow: 3px 3px 10px #333333;		
 		}
 
+		pre 
+		{
+			background-color: #FFF;
+		}
+
 	</style>
 
   <script>
@@ -57,12 +64,126 @@
 
 <h2 class="text-center">qUnit </h2>
 
+<br />
+<img src="img/qunit_screenshot.png" />
+<br />
+<br />
 <blockquote >
-<a href="http://qunitjs.com/">qUnit web site</a>
+<ul>
+	<li><a href="http://qunitjs.com/">qUnit Web Site</a></li>
+	<li><a href="http://qunitjs.com/intro/">Unit Testing Into</a></li>
+	<li><a href="http://qunitjs.com/cookbook/">qUnit Cookbook</a></li>
+</ul>
 </blockquote>
-
+<br />
 <div class="well">
-<h4 class="text-center">qUnit</h4>
+<h4>Configuration</h4>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;QUnit Test Example&lt;/title&gt;
+  &lt;link rel="stylesheet" href="css/qunit-1.12.0.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="qunit"&gt;&lt;/div&gt;
+  &lt;div id="qunit-fixture"&gt;&lt;/div&gt;
+  &lt;script src="js/qunit-1.12.0.js"&gt;&lt;/script&gt; &lt;!-- qunit source --&gt;
+  &lt;script src="tests/tests-1.js"&gt;&lt;/script&gt;   &lt;!-- unit tests --&gt;
+&lt;/body&gt;
+&lt;/html>
+</pre>
+<br />
+
+<h4><a href='qu-test1.html'>Example 1</a> - Boolean Assert</h4>
+<p><strong>ok( truthy [, message ] )</strong> The most basic one is ok(), which requires just one argument. If the argument evaluates to true, the assertion passes; otherwise, it fails. In addition, it accepts a string to display as a message in the test results</p>
+<pre>
+// 1st test
+test( "a basic test example", function() {
+  ok( true, "this test is fine" );
+});
+
+// 2nd test
+test( "a basic test example 2", function() {
+  ok( true, "this test is also fine" );
+});
+</pre>
+
+<h4><a href='qu-test1.html'>Example 2</a> - Equality</h4>
+<p><strong>deepEqual( actual, expected [, message ] )</strong> The deepEqual() assertion can be used just like equal() and is a better choice in most cases. Instead of the simple comparison operator (==), it uses the more accurate comparison operator (===). That way,  undefined doesn't equal null, 0, or the empty string (""). It also compares the content of objects so that {key: value} is equal to {key: value}, even when comparing two objects with distinct identities.</p>
+<pre>
+// 4th test - PASS
+test( "a equal example", function() {
+  equal( 0, false, "null, false; equal fails" );
+});
+
+// 5th test - FAIL
+test( "a deep equal example", function() {
+  deepEqual( 0, false, "null, false; equal fails" );
+});
+</pre>
+
+<h4><a href='qu-test2.html'>Example 3</a> - Grouping Tests</h4>
+<p><strong>module(name)</strong> You can use the module() function to group tests together</p>
+<pre>
+module( "group a" );
+// 1st test - group a
+test( "a basic test example", function() {
+  ok( true, "this test is fine" );
+});
+// 2nd test - group a
+test( "a basic test example 2", function() {
+  ok( true, "this test is also fine" );
+});
+
+module( "group b" );
+// 1st test - group b
+test( "a basic equal example", function() {
+  equal( 0, 0, "Zero; equal succeeds" );
+});
+</pre>
+
+<h4><a href='qu-test2.html'>Example 4</a> - Group Setup &amp; Teardown</h4>
+<p><strong>module(name, testFixtureObject )</strong> In addition to grouping tests, module() can be used to extract common code from tests within that module. The module() function takes an optional second parameter to define functions to run before and after each test within the module</p>
+<pre>
+var dateList;
+
+module( "module setup", {
+  setup: function() {		// adds 3 dates to an array
+    var d1 = new Date();
+    var d2 = new Date();
+    var d3 = new Date();
+    dateList = [d1, d2, d3];
+  }, 
+  teardown: function() {
+    dateList = null;
+  }
+});
+test( "test with setup and teardown", function() {
+  var expected_dates = 3;
+  var found_dates = dateList.length;
+
+  equal(expected_dates, found_dates, "Number of dates are equal succeeds" );
+});
+</pre>
+
+<h4><a href='qu-test3.html'>Example 5</a> - Asynchronous Tests</h4>
+<p><strong>asyncTest()</strong> Asynchronous callbacks conflict with the way the test runner queues and executes tests. When code under test starts a timeout or interval or an Ajax request, the test runner will just continue running the rest of the test, as well as other tests following it, instead of waiting for the result of the asynchronous operation. Use asyncTest() and call start() when your test block is complete and ready to resum. <strong>Note:</strong> Run example with developer tools console open</p>
+<pre>
+asyncTest( "asynchronous test: one second later!", function() {
+  expect( 1 );
+ 
+  setTimeout(function() {
+    ok( true, "Passed and ready to resume!" );
+    start();
+  }, 1000);
+});
+</pre>
+
+
+
+
 </div>
 
 <br />
