@@ -16,7 +16,7 @@
 
 	.demo
 	{
-        width: 80%;
+        width: 85%;
         margin: auto;
         margin-top: 20px;
         margin-bottom: 20px;
@@ -196,7 +196,7 @@
 <body>
 
 <div class="demo">
-<h2>Knockout Testing</h2>
+<h2>Knockout Test 3</h2>
 <br />
 
 <div class="demoSection">
@@ -238,28 +238,107 @@
 
 </div>
 
-<br>
-
-<div id="savedAreaOutput">
-	
-	<ul data-bind="foreach: savedSkiAreas">
-		<li data-bind="text: AreaName"></li>
-	</ul>
-</div>
-
 
 <!-- demo debug -->
 <div class="demo">
 <h2>ViewModel Data Debug</h2>
-
 <hr noshade />
-
 <pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
-
 <hr noshade />
 <br />
-
 </div>
+
+<!-- source -->
+<div class="demo">
+<h2>Javascript</h2>
+<hr noshade />
+<pre>
+$(document).ready(function () {
+	demoInit();
+
+});
+
+var ViewModel = {
+
+	favoriteSkiAreas : ko.observableArray([
+		{ ID: 1, AreaName: "Stowe", AreaRating: 5},
+		{ ID: 2, AreaName: "Mad River Glen", AreaRating: 4},
+		{ ID: 3, AreaName: "Sugarbush", AreaRating: 4 }
+	]),
+
+	skiAreaToAdd: ko.observable(""),
+	skiAreaToAddID: ko.observable(4),
+	skiAreaToAddRating: ko.observable(4),
+
+	removeArea : function(area) {
+		ViewModel.favoriteSkiAreas.remove(area);
+	}
+
+};
+
+function addNewArea()
+{
+	var newArea = ViewModel.skiAreaToAdd() ? ViewModel.skiAreaToAdd() : "";
+	var newAreaRating = ViewModel.skiAreaToAddRating() ? ViewModel.skiAreaToAddRating() : "";
+	var newAreaID = ViewModel.skiAreaToAddID();
+
+	if ((newArea.length > 0) && (newAreaRating.length > 0))
+	{
+		ViewModel.favoriteSkiAreas.push({ ID: newAreaID, AreaName: newArea, AreaRating: newAreaRating });
+		ViewModel.skiAreaToAddID(newAreaID + 1);
+	}
+}
+
+function demoInit()
+{
+	ko.applyBindings(ViewModel);
+}
+</pre>
+</div>
+
+<div class="demo">
+<h2>HTML</h2>
+<hr noshade />
+<pre>
+&lt;div id="addAreaForm"&gt;
+&lt;label for="areaName"&gt;Area:&lt;/label&gt;&lt;input type="text" id="areaName" placeholder="New Area" data-bind="value: skiAreaToAdd"&gt;
+&lt;label for="areaRating"&gt;Rating:&lt;/label&gt;&lt;select id="areaRating" data-bind="value: skiAreaToAddRating"&gt;&lt;option&gt;1&lt;/option&gt;&lt;option&gt;2&lt;/option&gt;&lt;option&gt;3&lt;/option&gt;&lt;option&gt;4&lt;/option&gt;&lt;option&gt;5&lt;/option&gt;&lt;/select&gt;
+&lt;button data-bind="click: addNewArea"&gt;Add Area&lt;/button&gt;
+&lt;/div&gt;
+&lt;br /&gt;
+
+&lt;table class="listTableFancy"&gt;
+	&lt;caption&gt;Favorite Ski Areas&lt;/caption&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;ID&lt;/th&gt;
+			&lt;th&gt;Name&lt;/th&gt;
+			&lt;th&gt;Rating&lt;/th&gt;
+			&lt;th&gt;&nbsp;&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody data-bind="foreach: favoriteSkiAreas"&gt;
+		&lt;tr&gt;
+			&lt;td data-bind="text: ID"&gt;&lt;/td&gt; 
+			&lt;td data-bind="text: AreaName"&gt;&lt;/td&gt;
+			&lt;td data-bind="text: AreaRating"&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;a href='#' data-bind='click: $root.removeArea'&gt;Delete&lt;/a&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+	&lt;tfoot&gt;
+		&lt;tr&gt;
+			&lt;td colspan="3" align="right"&gt;Number of areas:&lt;/td&gt;
+			&lt;td data-bind="text: favoriteSkiAreas().length"&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;br /&gt;
+
+&lt;/div&gt;
+
+</pre>
+</div>
+
 
 </body>
 </html>

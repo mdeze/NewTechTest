@@ -1,0 +1,272 @@
+<html>
+<head>
+
+<script src="inc/js/jquery.js"></script>
+<script src="inc/js/knockout-2.2.0.js"></script>
+
+
+<style type="text/css">
+
+    body
+    {
+        background-color: #56789a;
+        font-family:tahoma;
+        color: #FFFFFF;
+    }
+
+	.demo
+	{
+        width: 85%;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+		border: 1px solid black;
+		background-color: #FFF;
+		color: #000;
+		padding: 4px;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;        
+        -webkit-box-shadow: 3px 3px 10px #333333;	
+        -moz-box-shadow: 3px 3px 10px #333333;
+        box-shadow: 3px 3px 10px #333333;		
+
+	}
+
+    .demo h2
+    {
+    	font-size: 32px;
+        color: #CDCDCD;
+        text-align: center;
+        text-shadow: 2px 2px 4px #666666;
+    }	
+
+    .demoSection
+    {
+    	width:80%;
+    	margin: auto;
+    	margin-bottom: 10px;
+    	border: 1px solid #CCCCCC;
+		padding: 4px;
+		-moz-border-radius: 4px;
+		-webkit-border-radius: 4px;
+		border-radius: 4px;            	
+    }
+    .demoSection h2
+    {
+    	margin-top: 5px;
+    	color: #56789a;
+    	font-size: 20px;
+    	text-shadow: 2px 2px 4px #FFF;
+    }
+
+    table {
+    	color: #000000;
+    }
+
+</style>
+
+<script type="text/javascript">
+
+	$(document).ready(function () {
+		demo1Init();
+	});
+
+	//
+	// demo 1
+	//
+	SkiArea = function () {
+                this.AreaName = ko.observable();
+                this.Saved = ko.observable();
+            };
+
+	var testViewModel =  {
+
+	 	favoriteSkiAreas : ko.observableArray([
+	 			new SkiArea().AreaName("Stowe").Saved(false),
+	 			new SkiArea().AreaName("Mad River Glen").Saved(false),
+	 			new SkiArea().AreaName("Sugarbush").Saved(false )
+	 		]),
+
+	 	selectedSkiArea : ko.observable(),
+	 	skiAreaToAdd: ko.observable(),
+        removeArea : function(area) {
+			this.favoriteSkiAreas.remove(area);
+         },
+		showAreas: function () {
+			$.each(this.favoriteSkiAreas(), function () {
+				var desc = (this.AreaName != null)? this.AreaName : "n/a";
+				console.log("Area: " + desc);
+			});
+		}, 
+		addNewArea: function () {
+		 	var newArea = testViewModel.skiAreaToAdd() ? testViewModel.skiAreaToAdd() : "";
+
+		 	if (newArea.length > 0)
+		 	{
+		 		testViewModel.favoriteSkiAreas.push(new SkiArea().AreaName(newArea).Saved(true));
+		 		testViewModel.skiAreaToAdd("");
+
+		 	}
+		 }
+
+	 };
+
+	 $(".delArea").live("click", function() {
+	    testViewModel.favoriteSkiAreas.remove(ko.dataFor(this));
+	});
+
+
+	function demo1Init()
+	{
+		ko.applyBindings(testViewModel);
+	}
+	
+</script>	
+
+
+</head>
+<body>
+
+<!-- demo 1 -->
+<div id="demo1" class="demo">
+<h2>Knockout Test 2</h2>
+
+<p>Example of using jQuery delegate instead of of marchup for click binding</p>
+
+<span>Number of areas: </span><span data-bind="text: favoriteSkiAreas() ? favoriteSkiAreas().length : 0 "></span>
+<br>
+
+<span>Add your own area: </span><input type="text" data-bind="value: skiAreaToAdd, valueUpdate: 'change'"><button id="addNewArea" data-bind="click:addNewArea">Add</button>
+<br>
+<br />
+<table>
+	<caption>Array As Table</caption>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Saved</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody data-bind="foreach:favoriteSkiAreas">
+		<tr>
+			<td data-bind="text:AreaName"></td>
+			<td data-bind="text:Saved"></td>
+			<td><button class="delArea">X</button></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p><button data-bind="click: showAreas">Show Areas</button>&nbsp;<button id="saveAreasBtn">Save</button></p>
+</div>
+
+
+<!-- demo debug -->
+<div class="demo">
+<h2>ViewModel Data Debug</h2>
+<hr noshade />
+<pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+<hr noshade />
+<br />
+</div>
+
+<!-- source -->
+<div class="demo">
+<h2>Javascript</h2>
+<hr noshade />
+<pre>
+$(document).ready(function () {
+	demo1Init();
+});
+
+//
+// demo 1
+//
+SkiArea = function () {
+            this.AreaName = ko.observable();
+            this.Saved = ko.observable();
+        };
+
+var testViewModel =  {
+
+ 	favoriteSkiAreas : ko.observableArray([
+ 			new SkiArea().AreaName("Stowe").Saved(false),
+ 			new SkiArea().AreaName("Mad River Glen").Saved(false),
+ 			new SkiArea().AreaName("Sugarbush").Saved(false )
+ 		]),
+
+ 	selectedSkiArea : ko.observable(),
+ 	skiAreaToAdd: ko.observable(),
+    removeArea : function(area) {
+		this.favoriteSkiAreas.remove(area);
+     },
+	showAreas: function () {
+		$.each(this.favoriteSkiAreas(), function () {
+			var desc = (this.AreaName != null)? this.AreaName : "n/a";
+			console.log("Area: " + desc);
+		});
+	}, 
+	addNewArea: function () {
+	 	var newArea = testViewModel.skiAreaToAdd() ? testViewModel.skiAreaToAdd() : "";
+
+	 	if (newArea.length > 0)
+	 	{
+	 		testViewModel.favoriteSkiAreas.push(new SkiArea().AreaName(newArea).Saved(true));
+	 		testViewModel.skiAreaToAdd("");
+
+	 	}
+	 }
+
+ };
+
+ $(".delArea").live("click", function() {
+    testViewModel.favoriteSkiAreas.remove(ko.dataFor(this));
+});
+
+function demo1Init()
+{
+	ko.applyBindings(testViewModel);
+}
+</pre>
+</div>
+
+<div class="demo">
+<h2>HTML</h2>
+<hr noshade />
+<pre>
+
+&lt;span&gt;Number of areas: &lt;/span&gt;&lt;span data-bind="text: favoriteSkiAreas() ? favoriteSkiAreas().length : 0 "&gt;&lt;/span&gt;
+&lt;br&gt;
+
+&lt;span&gt;Add your own area: &lt;/span&gt;&lt;input type="text" data-bind="value: skiAreaToAdd, valueUpdate: 'change'"&gt;&lt;button id="addNewArea" data-bind="click:addNewArea"&gt;Add&lt;/button&gt;
+&lt;br&gt;
+&lt;br /&gt;
+&lt;table&gt;
+	&lt;caption&gt;Array As Table&lt;/caption&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th&gt;Name&lt;/th&gt;
+			&lt;th&gt;Saved&lt;/th&gt;
+			&lt;th&gt;&nbsp;&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody data-bind="foreach:favoriteSkiAreas"&gt;
+		&lt;tr&gt;
+			&lt;td data-bind="text:AreaName"&gt;&lt;/td&gt;
+			&lt;td data-bind="text:Saved"&gt;&lt;/td&gt;
+			&lt;td&gt;&lt;button class="delArea"&gt;X&lt;/button&gt;&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+&lt;p&gt;&lt;button data-bind="click: showAreas"&gt;Show Areas&lt;/button&gt;&nbsp;&lt;button id="saveAreasBtn"&gt;Save&lt;/button&gt;&lt;/p&gt;
+
+</pre>
+</div>
+
+
+</body>
+</html>
